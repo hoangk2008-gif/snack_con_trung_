@@ -8,10 +8,10 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Google Fonts: Plus Jakarta Sans & Be Vietnam Pro & Merriweather -->
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -22,17 +22,18 @@
         extend: {
           colors: {
             brand: {
-              forest: '#133517',       // Xanh lá cực đậm, vững chãi
-              leaf: '#1E4822',         // Xanh lá đậm tự nhiên như lá chanh
-              leafLight: '#327038',    // Xanh tươi mát
-              limeTint: '#E8F5E9',     // Xanh dịu nhạt
-              cream: '#FAF7F0',        // Nền trắng kem mộc mạc
-              creamAlt: '#F4EFE6',     // Kem tự nhiên đậm hơn chút
-              yellow: '#F4C430',       // Vàng nghệ / Snack giòn bơ
-              yellowWarm: '#F9E295',   // Vàng nhạt dễ chịu
-              kraft: '#8C5E3C',        // Nâu thủ công / bao bì giấy mộc
-              kraftDark: '#4E311B',    // Nâu sẫm chữ và viền
-              accentRed: '#C93B27'     // Đỏ cam ớt muối
+              forest: '#143820',       // 🟢 Xanh lá đậm tự nhiên
+              leaf: '#1E4E2B',         // 🟢 Xanh lá đậm lá chanh
+              leafLight: '#2F6F41',    // Xanh tươi mát
+              limeSoft: '#EAF3EC',     // Nền xanh nhạt thanh mát
+              cream: '#FAF6EE',        // 🤍 Nền Trắng / Kem tự nhiên
+              creamLight: '#FDFBF7',   // Trắng kem sáng
+              creamCard: '#FFFFFF',    // Thẻ nền trắng
+              yellow: '#F4C430',       // 🟡 Vàng kem snack / bơ
+              yellowWarm: '#F9DF88',   // Vàng ấm êm dịu
+              kraft: '#8C5D3B',        // 🟤 Nâu nhạt thủ công, thực phẩm mộc mạc
+              kraftDark: '#4A2F1B',    // Nâu sẫm chữ và đường viền
+              accentRed: '#C93B27'     // Đỏ muối ớt kích thích vị giác
             }
           },
           fontFamily: {
@@ -40,9 +41,9 @@
             serif: ['Playfair Display', 'serif']
           },
           boxShadow: {
-            'warm': '0 8px 30px -4px rgba(78, 49, 27, 0.08)',
-            'hover': '0 20px 35px -5px rgba(22, 54, 25, 0.12)',
-            'inner-warm': 'inset 0 2px 4px 0 rgba(78, 49, 27, 0.05)'
+            'warm': '0 8px 30px -4px rgba(74, 47, 27, 0.08)',
+            'hover': '0 20px 35px -5px rgba(20, 56, 32, 0.12)',
+            'inner-warm': 'inset 0 2px 4px 0 rgba(74, 47, 27, 0.05)'
           }
         }
       }
@@ -52,33 +53,31 @@
   <style>
     /* Custom scrollbars */
     ::-webkit-scrollbar {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #FAF7F0;
+      background: #FAF6EE;
     }
     ::-webkit-scrollbar-thumb {
-      background: #8C5E3C;
+      background: #8C5D3B;
       border-radius: 9999px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #4E311B;
+      background: #4A2F1B;
     }
 
-    /* Animation effects */
-    @keyframes floatingSlow {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-8px) rotate(1deg); }
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
     }
-    .animate-float {
-      animation: floatingSlow 4s ease-in-out infinite;
+    .animate-banner-float {
+      animation: floatCard 4s ease-in-out infinite;
     }
-
-    .shimmer-card {
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    .item-card {
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
     }
-    .shimmer-card:hover {
+    .item-card:hover {
       transform: translateY(-5px);
     }
   </style>
@@ -86,27 +85,27 @@
 
 <body class="bg-brand-cream text-brand-kraftDark font-sans antialiased selection:bg-brand-yellow selection:text-brand-forest">
 
-  <!-- Top Announcement Bar -->
-  <div class="bg-brand-forest text-brand-creamAlt py-2 px-4 text-xs font-semibold tracking-wide border-b border-white/10 relative z-30">
+  <!-- TOP BAR -->
+  <div class="bg-brand-forest text-brand-cream py-2 px-4 text-xs font-semibold tracking-wide border-b border-white/10 relative z-30">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
       <div class="flex items-center gap-2">
         <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-yellow text-brand-forest font-bold text-[10px]">🔥</span>
-        <span>Ưu đãi dùng thử: Nhập mã <strong class="text-brand-yellow underline tracking-wider cursor-pointer" onclick="applyCouponDirect('SNACKNGON')">SNACKNGON</strong> giảm ngay 10% toàn menu!</span>
+        <span>Mừng khai trương gian hàng: Nhập mã <strong class="text-brand-yellow underline tracking-wider cursor-pointer" onclick="applyCouponDirect('DOCLA10')">DOCLA10</strong> giảm 10% đơn đầu tiên!</span>
       </div>
       <div class="flex items-center gap-4 text-[11px] opacity-90">
         <span><i class="fa-solid fa-truck-fast text-brand-yellow mr-1"></i> Freeship đơn từ 150k</span>
         <span class="hidden md:inline">|</span>
-        <span class="hidden md:inline"><i class="fa-solid fa-shield-halved text-brand-yellow mr-1"></i> Nuôi khép kín VSATTP</span>
+        <span><i class="fa-solid fa-shield-halved text-brand-yellow mr-1"></i> 100% Côn trùng nông trại khép kín VSATTP</span>
       </div>
     </div>
   </div>
 
-  <!-- Main Navigation Sticky Header -->
-  <header class="sticky top-0 z-40 bg-brand-cream/95 backdrop-blur-md border-b border-brand-kraft/15 shadow-sm transition-all duration-300">
+  <!-- STICKY HEADER -->
+  <header class="sticky top-0 z-40 bg-brand-creamLight/95 backdrop-blur-md border-b border-brand-kraft/15 shadow-sm transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20 gap-4">
         
-        <!-- Logo thương hiệu -->
+        <!-- Logo -->
         <a href="#" class="flex items-center gap-3 group shrink-0">
           <div class="w-12 h-12 rounded-2xl bg-brand-leaf text-brand-yellow flex items-center justify-center font-black text-2xl shadow-md group-hover:scale-105 group-hover:rotate-3 transition-transform duration-300 border-2 border-brand-yellow/30">
             🦗
@@ -114,21 +113,21 @@
           <div>
             <div class="flex items-center gap-1.5">
               <span class="text-xl sm:text-2xl font-black tracking-tight text-brand-leaf leading-none">SNACK ĐỘC LẠ</span>
-              <span class="bg-brand-yellow text-brand-forest text-[10px] font-extrabold px-1.5 py-0.5 rounded shadow-sm">CHUẨN VỊ</span>
+              <span class="bg-brand-yellow text-brand-forest text-[10px] font-extrabold px-1.5 py-0.5 rounded shadow-sm">ĂN LÀ GHIỀN</span>
             </div>
-            <span class="text-[11px] font-bold tracking-widest uppercase text-brand-kraft mt-0.5 block">ĂN LÀ GHIỀN • CÔN TRÙNG SẤY</span>
+            <span class="text-[11px] font-bold tracking-widest uppercase text-brand-kraft mt-0.5 block">CÔN TRÙNG SẤY GIÒN TỰ NHIÊN</span>
           </div>
         </a>
 
-        <!-- Live Search Input (Desktop) -->
+        <!-- Desktop Search Bar -->
         <div class="hidden lg:flex flex-1 max-w-md mx-4 relative">
           <div class="relative w-full">
             <input 
               type="text" 
               id="liveSearchInput"
               oninput="handleSearch(this.value)"
-              placeholder="Tìm kiếm dế sấy, sâu phô mai, đuông dừa..." 
-              class="w-full pl-10 pr-10 py-2.5 bg-white/90 border border-brand-kraft/25 rounded-2xl text-xs sm:text-sm text-brand-kraftDark placeholder-brand-kraft/60 focus:outline-none focus:ring-2 focus:ring-brand-leaf focus:border-transparent transition-all shadow-inner-warm"
+              placeholder="Tìm dế sấy, đuông dừa, sâu gạo phô mai, bánh quy..." 
+              class="w-full pl-10 pr-10 py-2.5 bg-white border border-brand-kraft/25 rounded-2xl text-xs sm:text-sm text-brand-kraftDark placeholder-brand-kraft/60 focus:outline-none focus:ring-2 focus:ring-brand-leaf shadow-inner-warm"
             >
             <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-brand-kraft/60 text-xs"></i>
             <button onclick="clearSearch()" id="clearSearchBtn" class="hidden absolute right-3.5 top-3 text-brand-kraft hover:text-brand-accentRed text-xs">
@@ -137,29 +136,28 @@
           </div>
         </div>
 
-        <!-- Desktop Menu Links -->
+        <!-- Navigation Links -->
         <nav class="hidden md:flex items-center gap-6 font-bold text-xs lg:text-sm text-brand-kraftDark">
           <a href="#hero" class="hover:text-brand-leaf transition-colors py-1">Trang Chủ</a>
-          <a href="#menu-section" class="hover:text-brand-leaf transition-colors py-1">Thực Đơn</a>
+          <a href="#menu-section" class="hover:text-brand-leaf transition-colors py-1">Menu Món (CL01 - CL08)</a>
           <a href="#combos-section" class="hover:text-brand-leaf transition-colors py-1 text-brand-leaf flex items-center gap-1">
-            <span>Combo Hot</span>
+            <span>Combo Tiết Kiệm</span>
             <span class="w-2 h-2 rounded-full bg-brand-accentRed animate-pulse"></span>
           </a>
           <a href="#nutrition-section" class="hover:text-brand-leaf transition-colors py-1">Dinh Dưỡng</a>
-          <a href="#reviews-section" class="hover:text-brand-leaf transition-colors py-1">Review</a>
         </nav>
 
-        <!-- Right Side Actions: Hotline & Cart -->
+        <!-- Header Actions: Cart & Contact -->
         <div class="flex items-center gap-3 shrink-0">
-          <a href="tel:0987654321" class="hidden xl:flex items-center gap-2 px-3 py-2 rounded-xl bg-brand-creamAlt hover:bg-brand-yellow/20 text-brand-leaf text-xs font-bold transition-colors border border-brand-kraft/15">
-            <i class="fa-solid fa-phone-volume text-brand-leaf"></i>
+          <a href="tel:0987654321" class="hidden xl:flex items-center gap-2 px-3 py-2 rounded-xl bg-brand-limeSoft hover:bg-brand-yellow/20 text-brand-leaf text-xs font-bold transition-colors border border-brand-leaf/20">
+            <i class="fa-solid fa-phone text-brand-leaf"></i>
             <span>0987.654.321</span>
           </a>
 
-          <!-- Cart Trigger Button -->
+          <!-- Cart Button -->
           <button 
             onclick="toggleCartModal(true)" 
-            class="relative flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-brand-leaf hover:bg-brand-forest text-white transition-all shadow-md hover:shadow-lg active:scale-95 group"
+            class="relative flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-brand-leaf hover:bg-brand-forest text-white transition-all shadow-md hover:shadow-lg active:scale-95 group"
             aria-label="Xem giỏ hàng"
           >
             <i class="fa-solid fa-basket-shopping text-brand-yellow text-base group-hover:rotate-12 transition-transform"></i>
@@ -178,8 +176,8 @@
           <input 
             type="text" 
             oninput="handleSearch(this.value)"
-            placeholder="Tìm dế sấy lá chanh, sâu phô mai..." 
-            class="w-full pl-9 pr-8 py-2 bg-white/90 border border-brand-kraft/20 rounded-xl text-xs text-brand-kraftDark placeholder-brand-kraft/60 focus:outline-none focus:ring-2 focus:ring-brand-leaf"
+            placeholder="Tìm theo mã (CL01..), tên món dế, đuông dừa..." 
+            class="w-full pl-9 pr-8 py-2 bg-white border border-brand-kraft/20 rounded-xl text-xs text-brand-kraftDark placeholder-brand-kraft/60 focus:outline-none focus:ring-2 focus:ring-brand-leaf"
           >
           <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-brand-kraft/60 text-xs"></i>
         </div>
@@ -187,83 +185,68 @@
     </div>
   </header>
 
-  <!-- HERO BANNER SECTION (Theo chuẩn tone màu & hình ảnh mô phỏng) -->
-  <section id="hero" class="relative overflow-hidden bg-gradient-to-b from-brand-creamAlt via-brand-cream to-brand-cream pt-6 pb-14 sm:py-16 border-b border-brand-kraft/10">
-    <!-- Decorative organic background elements -->
-    <div class="absolute -top-12 -left-12 w-64 h-64 bg-brand-leafLight/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute top-1/2 -right-20 w-80 h-80 bg-brand-yellow/15 rounded-full blur-3xl pointer-events-none"></div>
-
+  <!-- HERO SECTION: BANNER LỚN CHUẨN TONE MÀU & ẢNH SẢN PHẨM MẪU -->
+  <section id="hero" class="relative overflow-hidden bg-gradient-to-b from-brand-limeSoft/50 via-brand-cream to-brand-cream pt-6 pb-14 sm:py-16 border-b border-brand-kraft/15">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
         <!-- Left Banner Headline -->
         <div class="lg:col-span-6 text-center lg:text-left space-y-5">
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-leaf/10 border border-brand-leaf/25 text-brand-leaf text-xs font-black tracking-wider uppercase">
             <span class="w-2 h-2 rounded-full bg-brand-leaf animate-ping"></span>
-            Siêu Thực Phẩm Tương Lai • Giòn Tan Đậm Vị
+            Tone Màu Tự Nhiên Chuẩn Vị • Nguồn Đạm Lành Sạch
           </div>
 
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-brand-forest tracking-tight leading-[1.15]">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-brand-forest tracking-tight leading-[1.12]">
             SNACK ĐỘC LẠ <br/>
-            <span class="text-brand-accentRed font-serif italic font-extrabold">– ĂN LÀ GHIỀN!</span>
+            <span class="text-brand-accentRed font-serif italic font-extrabold">– ĂN LÀ GHIỀN</span>
           </h1>
 
           <p class="text-brand-kraft text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium">
-            Thưởng thức nghệ thuật ăn vặt mới lạ từ côn trùng sấy giòn thượng hạng: <strong class="text-brand-forest">Dế sốc lá chanh tươi, sâu gạo sốt phô mai béo ngậy, đuông dừa sên bơ bắp</strong>. Bổ sung protein tự nhiên gấp 3 lần thịt bò!
+            Bộ sưu tập 8 món ăn vặt độc đáo từ côn trùng thượng hạng: <strong class="text-brand-forest">Dế sốc lá chanh, đuông dừa sên bơ, sâu gạo lắc phô mai, chà bông dế và bánh quy mứt bùi ngậy</strong>. Sấy khí thăng hoa giòn tan, không dầu mỡ, thơm lừng chuẩn vị!
           </p>
 
-          <!-- Badges highlight -->
-          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 pt-1 text-xs font-bold text-brand-forest">
-            <span class="bg-white px-3 py-1.5 rounded-xl border border-brand-kraft/15 shadow-sm flex items-center gap-1.5">
-              <i class="fa-solid fa-leaf text-brand-leaf"></i> 100% Khép kín & Tự nhiên
+          <!-- Color palette legend showcase -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1 text-[11px] font-bold">
+            <span class="bg-white px-2.5 py-1.5 rounded-xl border border-brand-leaf/30 text-brand-leaf flex items-center gap-1.5 shadow-sm">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-leaf"></span> Xanh Lá Đậm (Lá Chanh)
             </span>
-            <span class="bg-white px-3 py-1.5 rounded-xl border border-brand-kraft/15 shadow-sm flex items-center gap-1.5">
-              <i class="fa-solid fa-award text-brand-yellow"></i> Chuẩn Vệ Sinh An Toàn
+            <span class="bg-white px-2.5 py-1.5 rounded-xl border border-brand-yellow/50 text-brand-kraftDark flex items-center gap-1.5 shadow-sm">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-yellow"></span> Vàng Kem (Snack Giòn)
             </span>
-            <span class="bg-white px-3 py-1.5 rounded-xl border border-brand-kraft/15 shadow-sm flex items-center gap-1.5">
-              <i class="fa-solid fa-bolt text-brand-accentRed"></i> Giàu Canxi & Đạm
+            <span class="bg-white px-2.5 py-1.5 rounded-xl border border-brand-kraft/30 text-brand-kraft flex items-center gap-1.5 shadow-sm">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-kraft"></span> Nâu Thủ Công (Mộc Mạc)
             </span>
           </div>
 
-          <!-- CTAs -->
+          <!-- CTA Buttons -->
           <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-4">
             <a href="#menu-section" class="w-full sm:w-auto px-7 py-3.5 bg-brand-leaf hover:bg-brand-forest text-brand-cream font-black text-sm rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-center">
-              <span>ĐẶT MUA NGAY (TỪ 25K)</span>
+              <span>ĐẶT MÓN NGAY (TỪ 25K)</span>
               <i class="fa-solid fa-arrow-down-long text-xs text-brand-yellow"></i>
             </a>
-            <a href="#combos-section" class="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-brand-creamAlt text-brand-kraftDark border-2 border-brand-kraft/20 font-bold text-sm rounded-2xl transition-all flex items-center justify-center gap-2">
-              <i class="fa-solid fa-gift text-brand-yellow"></i>
-              <span>Xem Combo Tiết Kiệm</span>
+            <a href="#combos-section" class="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-brand-cream text-brand-kraftDark border-2 border-brand-kraft/20 font-bold text-sm rounded-2xl transition-all flex items-center justify-center gap-2 shadow-sm">
+              <i class="fa-solid fa-box-open text-brand-yellow"></i>
+              <span>Combo Tiết Kiệm</span>
             </a>
           </div>
 
-          <!-- Proof mini-bar -->
-          <div class="pt-4 flex items-center justify-center lg:justify-start gap-4 text-xs text-brand-kraft border-t border-brand-kraft/15">
-            <div class="flex -space-x-2">
-              <div class="w-8 h-8 rounded-full border-2 border-white bg-amber-200 flex items-center justify-center text-xs font-bold">🌾</div>
-              <div class="w-8 h-8 rounded-full border-2 border-white bg-green-200 flex items-center justify-center text-xs font-bold">🦗</div>
-              <div class="w-8 h-8 rounded-full border-2 border-white bg-yellow-200 flex items-center justify-center text-xs font-bold">🧀</div>
-            </div>
-            <div>
-              <div class="flex text-brand-yellow text-xs">
-                ★★★★★
-              </div>
-              <span class="font-bold text-brand-forest">4.9/5</span> từ hơn <strong class="text-brand-forest">2.500+</strong> tín đồ ăn vặt
-            </div>
+          <!-- Social Proof -->
+          <div class="pt-4 flex items-center justify-center lg:justify-start gap-3 text-xs text-brand-kraft border-t border-brand-kraft/15">
+            <div class="flex text-brand-yellow text-sm">★★★★★</div>
+            <span><strong class="text-brand-forest">4.9/5</strong> Đánh giá hài lòng từ hơn 3.200 lượt khách thử thách!</span>
           </div>
         </div>
 
-        <!-- Right Banner Visual Display (Mô phỏng banner gốc của thương hiệu) -->
+        <!-- Right Side: Large Banner Container (Khung banner lớn như poster thực tế) -->
         <div class="lg:col-span-6 relative">
-          <!-- Big Banner Card Style Container -->
-          <div class="relative bg-gradient-to-br from-brand-forest via-brand-leaf to-brand-kraftDark p-3 sm:p-5 rounded-3xl shadow-2xl border-4 border-brand-yellowWarm/80 animate-float">
+          <div class="relative bg-gradient-to-br from-brand-forest via-brand-leaf to-brand-kraftDark p-3 sm:p-5 rounded-3xl shadow-2xl border-4 border-brand-yellowWarm/80 animate-banner-float">
             
-            <!-- Banner Canvas Interior -->
             <div class="bg-brand-cream rounded-2xl p-4 sm:p-6 border border-brand-kraft/20 relative overflow-hidden">
-              
-              <!-- Subtle leaf decorations inside banner -->
-              <div class="absolute top-2 right-2 text-3xl opacity-20 pointer-events-none">🌿</div>
-              <div class="absolute bottom-2 left-2 text-3xl opacity-20 pointer-events-none">🍃</div>
+              <!-- Decorative leaf corner accents -->
+              <div class="absolute -top-3 -right-3 text-4xl opacity-20 pointer-events-none select-none">🍃</div>
+              <div class="absolute -bottom-3 -left-3 text-4xl opacity-20 pointer-events-none select-none">🌿</div>
 
               <!-- Banner Title Header -->
               <div class="text-center pb-3 border-b-2 border-dashed border-brand-kraft/25">
@@ -273,161 +256,150 @@
                 <h3 class="text-xl sm:text-2xl font-black text-brand-forest tracking-tight uppercase">
                   SNACK ĐỘC LẠ – ĂN LÀ GHIỀN
                 </h3>
-                <p class="text-xs text-brand-kraft font-semibold">Tự Nhiên • Giòn Tan • Sốc Lá Chanh Tươi & Phô Mai</p>
+                <p class="text-xs text-brand-kraft font-bold">100% Côn Trùng Sấy Giòn • Sốc Lá Chanh & Bơ Tỏi</p>
               </div>
 
-              <!-- Banner Showcase 4 Featured Snack Dishes -->
+              <!-- Banner 4 món đại diện dùng đúng ảnh người dùng cung cấp -->
               <div class="grid grid-cols-2 gap-3.5 my-4">
                 
-                <!-- Item 1: Dế sấy giòn -->
-                <div class="bg-white rounded-xl p-2.5 border border-brand-kraft/15 shadow-sm group hover:border-brand-leaf transition-colors">
-                  <div class="relative h-28 sm:h-32 rounded-lg overflow-hidden bg-brand-creamAlt mb-2">
+                <!-- 1. CL01 -->
+                <div class="bg-white rounded-xl p-2 border border-brand-kraft/15 shadow-sm group hover:border-brand-leaf transition-colors">
+                  <div class="relative h-28 sm:h-32 rounded-lg overflow-hidden bg-brand-cream mb-1.5">
                     <img 
-                      src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=500&q=80" 
-                      alt="Dế sấy giòn xóc lá chanh" 
-                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      src='https://lh3.googleusercontent.com/d/10RhbbVrdQDCXoliG8TCh7K7iPBABgEfy'
+                      alt="1/ Dế sấy giòn sốc lá chanh, 200g, 35k, CL01" 
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     >
-                    <span class="absolute top-1.5 left-1.5 bg-brand-leaf text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded shadow">
-                      LÁ CHANH
+                    <span class="absolute top-1 left-1 bg-brand-leaf text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">
+                      CL01
                     </span>
-                    <span class="absolute bottom-1.5 right-1.5 bg-brand-yellow text-brand-forest text-[10px] font-black px-1.5 py-0.5 rounded">
-                      35K
+                    <span class="absolute bottom-1 right-1 bg-brand-yellow text-brand-forest text-[10px] font-black px-1.5 py-0.5 rounded">
+                      35k
                     </span>
                   </div>
-                  <h4 class="font-bold text-xs text-brand-forest line-clamp-1">1. Dế Sấy Sốc Lá Chanh</h4>
-                  <p class="text-[10px] text-brand-kraft">200g • Thơm giòn rụm</p>
+                  <h4 class="font-bold text-xs text-brand-forest line-clamp-1">1/ Dế sấy sốc lá chanh</h4>
+                  <p class="text-[10px] text-brand-kraft">200g • Thơm giòn the mát</p>
                 </div>
 
-                <!-- Item 2: Đuông dừa chiên bơ -->
-                <div class="bg-white rounded-xl p-2.5 border border-brand-kraft/15 shadow-sm group hover:border-brand-leaf transition-colors">
-                  <div class="relative h-28 sm:h-32 rounded-lg overflow-hidden bg-brand-creamAlt mb-2">
+                <!-- 2. CL02 -->
+                <div class="bg-white rounded-xl p-2 border border-brand-kraft/15 shadow-sm group hover:border-brand-leaf transition-colors">
+                  <div class="relative h-28 sm:h-32 rounded-lg overflow-hidden bg-brand-cream mb-1.5">
                     <img 
-                      src="https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=500&q=80" 
-                      alt="Đuông dừa chiên bơ tỏi" 
-                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      src='https://lh3.googleusercontent.com/d/1wawQghgkdr9Mvg02dwxgJnV7otv0-EC1'
+                      alt="2/ Snack đuông dừa chiên bơ, 100g, 25k, CL02" 
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     >
-                    <span class="absolute top-1.5 left-1.5 bg-brand-accentRed text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded shadow">
-                      BÉO NGẬY
+                    <span class="absolute top-1 left-1 bg-brand-accentRed text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">
+                      CL02
                     </span>
-                    <span class="absolute bottom-1.5 right-1.5 bg-brand-yellow text-brand-forest text-[10px] font-black px-1.5 py-0.5 rounded">
-                      25K
+                    <span class="absolute bottom-1 right-1 bg-brand-yellow text-brand-forest text-[10px] font-black px-1.5 py-0.5 rounded">
+                      25k
                     </span>
                   </div>
-                  <h4 class="font-bold text-xs text-brand-forest line-clamp-1">2. Đuông Dừa Chiên Bơ</h4>
-                  <p class="text-[10px] text-brand-kraft">100g • Đậm đà vị bơ tỏi</p>
+                  <h4 class="font-bold text-xs text-brand-forest line-clamp-1">2/ Snack đuông dừa chiên bơ</h4>
+                  <p class="text-[10px] text-brand-kraft">100g • Béo ngậy giòn rụm</p>
                 </div>
 
-                <!-- Item 3: Sâu gạo tẩm phô mai -->
-                <div class="bg-white rounded-xl p-2.5 border border-brand-kraft/15 shadow-sm group hover:border-brand-leaf transition-colors">
-                  <div class="relative h-28 sm:h-32 rounded-lg overflow-hidden bg-brand-creamAlt mb-2">
+                <!-- 3. CL03 -->
+                <div class="bg-white rounded-xl p-2 border border-brand-kraft/15 shadow-sm group hover:border-brand-leaf transition-colors">
+                  <div class="relative h-28 sm:h-32 rounded-lg overflow-hidden bg-brand-cream mb-1.5">
                     <img 
-                      src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=500&q=80" 
-                      alt="Sâu gạo lắc phô mai" 
-                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      src='https://lh3.googleusercontent.com/d/1vsTxiG4lzPm1b3QxPupxB33s_Wco1rnH'
+                      alt="3/ Sâu gạo tẩm phô mai, 200g, 25k, CL03" 
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     >
-                    <span class="absolute top-1.5 left-1.5 bg-brand-yellow text-brand-forest text-[9px] font-extrabold px-1.5 py-0.5 rounded shadow">
-                      PHÔ MAI
+                    <span class="absolute top-1 left-1 bg-brand-yellow text-brand-forest text-[9px] font-extrabold px-1.5 py-0.5 rounded">
+                      CL03
                     </span>
-                    <span class="absolute bottom-1.5 right-1.5 bg-brand-yellow text-brand-forest text-[10px] font-black px-1.5 py-0.5 rounded">
-                      25K
+                    <span class="absolute bottom-1 right-1 bg-brand-yellow text-brand-forest text-[10px] font-black px-1.5 py-0.5 rounded">
+                      25k
                     </span>
                   </div>
-                  <h4 class="font-bold text-xs text-brand-forest line-clamp-1">3. Sâu Gạo Tẩm Phô Mai</h4>
-                  <p class="text-[10px] text-brand-kraft">200g • Giòn tan bùi ngậy</p>
+                  <h4 class="font-bold text-xs text-brand-forest line-clamp-1">3/ Sâu gạo tẩm phô mai</h4>
+                  <p class="text-[10px] text-brand-kraft">200g • Vị phô mai bùi béo</p>
                 </div>
 
-                <!-- Item 4: Nhộng tằm sấy dẻo hoặc hũ muối ớt -->
-                <div class="bg-white rounded-xl p-2.5 border border-brand-kraft/15 shadow-sm group hover:border-brand-leaf transition-colors">
-                  <div class="relative h-28 sm:h-32 rounded-lg overflow-hidden bg-brand-creamAlt mb-2">
+                <!-- 4. CL04 -->
+                <div class="bg-white rounded-xl p-2 border border-brand-kraft/15 shadow-sm group hover:border-brand-leaf transition-colors">
+                  <div class="relative h-28 sm:h-32 rounded-lg overflow-hidden bg-brand-cream mb-1.5">
                     <img 
-                      src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=500&q=80" 
-                      alt="Nhộng tằm muối ớt" 
-                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      src='https://lh3.googleusercontent.com/d/1QMeW3c2vGM26qwoMAi_5y1arP4uTFZPw'
+                      alt="4/ Sâu gạo trứng muối đẫm sốt, 200g, 25k, CL04" 
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     >
-                    <span class="absolute top-1.5 left-1.5 bg-brand-accentRed text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded shadow">
-                      MUỐI ỚT
+                    <span class="absolute top-1 left-1 bg-amber-600 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">
+                      CL04
                     </span>
-                    <span class="absolute bottom-1.5 right-1.5 bg-brand-yellow text-brand-forest text-[10px] font-black px-1.5 py-0.5 rounded">
-                      30K
+                    <span class="absolute bottom-1 right-1 bg-brand-yellow text-brand-forest text-[10px] font-black px-1.5 py-0.5 rounded">
+                      25k
                     </span>
                   </div>
-                  <h4 class="font-bold text-xs text-brand-forest line-clamp-1">4. Nhộng Tằm Muối Ớt</h4>
-                  <p class="text-[10px] text-brand-kraft">200g • Cay the hấp dẫn</p>
+                  <h4 class="font-bold text-xs text-brand-forest line-clamp-1">4/ Sâu gạo sốt trứng muối</h4>
+                  <p class="text-[10px] text-brand-kraft">200g • Trứng muối đẫm sốt</p>
                 </div>
 
               </div>
 
-              <!-- Banner Promo Ribbon Bottom -->
+              <!-- Banner Promo ribbon -->
               <div class="bg-brand-yellowWarm/40 border border-brand-yellow/60 rounded-xl p-2.5 flex items-center justify-between">
                 <div>
-                  <span class="text-[10px] uppercase font-bold text-brand-kraft block leading-none">Mức giá trải nghiệm</span>
-                  <span class="text-sm font-black text-brand-accentRed">CHỈ TỪ 25.000đ / Hũ</span>
+                  <span class="text-[10px] uppercase font-bold text-brand-kraft block leading-none">Giá trải nghiệm dùng thử</span>
+                  <span class="text-sm font-black text-brand-accentRed">CHỈ TỪ 25.000đ / MÓN</span>
                 </div>
                 <button onclick="scrollToMenu()" class="bg-brand-forest hover:bg-brand-leaf text-white font-extrabold text-[11px] px-3.5 py-2 rounded-xl transition-all shadow">
-                  Chọn Ngay <i class="fa-solid fa-angle-right ml-0.5"></i>
+                  Xem Đủ 8 Món <i class="fa-solid fa-arrow-right ml-1"></i>
                 </button>
               </div>
 
             </div>
           </div>
-
-          <!-- Floating Floating Stamp -->
-          <div class="absolute -bottom-4 -left-3 sm:-left-6 bg-white p-3 rounded-2xl shadow-xl border border-brand-kraft/15 flex items-center gap-3 backdrop-blur-md">
-            <div class="w-10 h-10 rounded-xl bg-brand-leaf text-brand-yellow flex items-center justify-center font-bold text-xl">
-              🌿
-            </div>
-            <div>
-              <p class="text-xs font-black text-brand-forest">Công Thức Độc Bản</p>
-              <p class="text-[10px] text-brand-kraft">100% Sấy Khí Sạch Không Hôi Dầu</p>
-            </div>
-          </div>
         </div>
 
       </div>
+
     </div>
   </section>
 
-  <!-- MAIN E-COMMERCE PRODUCTS & MENU SECTION -->
+  <!-- PRODUCTS MENU SECTION: 8 MÓN CHUẨN CL01 ĐẾN CL08 -->
   <section id="menu-section" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <!-- Section Title & Intro -->
     <div class="text-center max-w-3xl mx-auto mb-10 space-y-2">
       <span class="text-xs font-black uppercase tracking-widest text-brand-leaf bg-brand-leaf/10 px-3.5 py-1.5 rounded-full inline-block">
-        Thực Đơn Độc Lạ Chính Hiệu
+        Thực Đơn Côn Trùng Thượng Hạng
       </span>
       <h2 class="text-3xl sm:text-4xl font-black text-brand-forest">
-        DANH SÁCH 8 MÓN SNACK CÔN TRÙNG BÁN CHẠY
+        DANH SÁCH 8 MÓN ĂN VẶT ĐỘC LẠ (CL01 - CL08)
       </h2>
       <p class="text-brand-kraft text-xs sm:text-sm">
-        Được tuyển chọn từ nguồn nuôi trang trại chuẩn, chế biến sạch sẽ, tẩm ướp gia vị đậm đà ngon bá cháy.
+        Hình ảnh thực tế từ xưởng chế biến – Hương vị tự nhiên, giòn bùi rụm, gia vị tẩm ướp đậm đà không hóa chất bảo quản.
       </p>
 
       <!-- Category Filter Tabs -->
       <div class="flex flex-wrap items-center justify-center gap-2 pt-4" id="categoryFilterContainer">
         <button onclick="setCategoryFilter('all')" class="category-btn active px-4 py-2 rounded-xl text-xs font-bold transition-all bg-brand-leaf text-white shadow-sm">
-          Tất Cả (8)
+          Tất Cả 8 Món
         </button>
-        <button onclick="setCategoryFilter('de')" class="category-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white hover:bg-brand-creamAlt text-brand-kraftDark border border-brand-kraft/15">
-          🦗 Món Dế Mèn
+        <button onclick="setCategoryFilter('de')" class="category-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white hover:bg-brand-cream text-brand-kraftDark border border-brand-kraft/20">
+          🦗 Dế Mèn & Chà Bông (CL01, CL05)
         </button>
-        <button onclick="setCategoryFilter('duong')" class="category-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white hover:bg-brand-creamAlt text-brand-kraftDark border border-brand-kraft/15">
-          🌴 Đuông Dừa
+        <button onclick="setCategoryFilter('duong')" class="category-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white hover:bg-brand-cream text-brand-kraftDark border border-brand-kraft/20">
+          🌴 Đuông Dừa & Mứt (CL02, CL08)
         </button>
-        <button onclick="setCategoryFilter('sau')" class="category-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white hover:bg-brand-creamAlt text-brand-kraftDark border border-brand-kraft/15">
-          🐛 Sâu Gạo & Nhộng
+        <button onclick="setCategoryFilter('sau')" class="category-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white hover:bg-brand-cream text-brand-kraftDark border border-brand-kraft/20">
+          🐛 Sâu Gạo Đậm Sốt (CL03, CL04)
         </button>
-        <button onclick="setCategoryFilter('banh')" class="category-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white hover:bg-brand-creamAlt text-brand-kraftDark border border-brand-kraft/15">
-          🍪 Bánh Quy Sên Bơ
+        <button onclick="setCategoryFilter('nhong')" class="category-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white hover:bg-brand-cream text-brand-kraftDark border border-brand-kraft/20">
+          🍶 Nhộng Tằm Muối Ớt (CL06, CL07)
         </button>
       </div>
 
-      <!-- Sorting Bar -->
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-brand-kraft/10 text-xs">
-        <span class="text-brand-kraft">Đang hiển thị <strong id="productCountDisplay" class="text-brand-forest">8</strong> món ăn vặt</span>
+      <!-- Quick Sorting Bar -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-brand-kraft/15 text-xs">
+        <span class="text-brand-kraft">Hiển thị <strong id="productCountDisplay" class="text-brand-forest">8</strong> món ăn vặt</span>
         <div class="flex items-center gap-2">
           <label for="sortSelect" class="text-brand-kraft font-semibold">Sắp xếp theo:</label>
-          <select id="sortSelect" onchange="handleSort(this.value)" class="bg-white border border-brand-kraft/20 rounded-xl px-3 py-1.5 text-xs text-brand-kraftDark font-bold focus:outline-none focus:ring-1 focus:ring-brand-leaf">
-            <option value="default">Mặc định (Hot nhất)</option>
+          <select id="sortSelect" onchange="handleSort(this.value)" class="bg-white border border-brand-kraft/25 rounded-xl px-3 py-1.5 text-xs text-brand-kraftDark font-bold focus:outline-none focus:ring-1 focus:ring-brand-leaf">
+            <option value="default">Mặc định theo mã CL</option>
             <option value="price-asc">Giá: Thấp đến Cao</option>
             <option value="price-desc">Giá: Cao đến Thấp</option>
             <option value="name-asc">Tên: A - Z</option>
@@ -436,27 +408,27 @@
       </div>
     </div>
 
-    <!-- Product Cards Grid Container -->
+    <!-- Product Cards Grid: 8 Items CL01 - CL08 -->
     <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- Injected by JavaScript dynamically -->
+      <!-- Injected by JavaScript -->
     </div>
 
-    <!-- Empty search/filter message -->
+    <!-- No Products Found Notification -->
     <div id="noProductsFound" class="hidden text-center py-16">
-      <div class="w-16 h-16 rounded-full bg-brand-creamAlt text-brand-kraft flex items-center justify-center mx-auto text-2xl mb-3">
+      <div class="w-16 h-16 rounded-full bg-brand-cream text-brand-kraft flex items-center justify-center mx-auto text-2xl mb-3">
         🔍
       </div>
       <h3 class="text-base font-bold text-brand-forest">Không tìm thấy món ăn phù hợp</h3>
-      <p class="text-xs text-brand-kraft mt-1">Vui lòng thử từ khóa khác hoặc xóa bộ lọc tìm kiếm.</p>
-      <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-brand-leaf text-white text-xs font-bold rounded-xl">
+      <p class="text-xs text-brand-kraft mt-1">Vui lòng thử tìm từ khóa khác hoặc xem tất cả danh mục.</p>
+      <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-brand-leaf text-white text-xs font-bold rounded-xl shadow">
         Xem tất cả món
       </button>
     </div>
 
   </section>
 
-  <!-- COMBO TIẾT KIỆM SECTION -->
-  <section id="combos-section" class="py-14 bg-brand-creamAlt border-y border-brand-kraft/15">
+  <!-- COMBO SECTION -->
+  <section id="combos-section" class="py-14 bg-brand-cream border-y border-brand-kraft/15">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
@@ -464,170 +436,170 @@
           <span class="text-brand-accentRed text-xs font-black uppercase tracking-wider bg-brand-yellowWarm/60 px-3 py-1 rounded-full">
             🎁 TIẾT KIỆM ĐẾN 25%
           </span>
-          <h2 class="text-2xl sm:text-3xl font-black text-brand-forest mt-1.5">COMBO BẬC THẦY ĂN VẶT</h2>
-          <p class="text-xs sm:text-sm text-brand-kraft">Set quà tặng & tiệc nhậu độc lạ cùng hội bạn thân</p>
+          <h2 class="text-2xl sm:text-3xl font-black text-brand-forest mt-1.5">SET COMBO ĂN VẶT & TIỆC TÙNG</h2>
+          <p class="text-xs sm:text-sm text-brand-kraft">Phối hợp đủ món giòn, béo, cay ngọt cho nhóm bạn và gia đình</p>
         </div>
-        <div class="text-xs font-semibold text-brand-leaf bg-white px-4 py-2 rounded-xl border border-brand-kraft/10 shadow-sm flex items-center gap-2">
-          <i class="fa-solid fa-gift text-brand-yellow text-sm"></i> Tặng kèm 1 hũ sốt chấm muối ớt chanh đặc biệt trong mỗi combo!
+        <div class="text-xs font-semibold text-brand-leaf bg-white px-4 py-2.5 rounded-xl border border-brand-kraft/15 shadow-sm flex items-center gap-2">
+          <i class="fa-solid fa-gift text-brand-yellow text-sm"></i> Tặng kèm hũ muối ớt chanh rang độc quyền với mỗi combo!
         </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <!-- Combo 1 -->
-        <div class="bg-white rounded-3xl p-6 border-2 border-brand-yellow shadow-md hover:shadow-xl transition-all relative flex flex-col justify-between">
+        <div class="bg-white rounded-3xl p-6 border-2 border-brand-yellow shadow-warm hover:shadow-hover transition-all flex flex-col justify-between relative">
           <div class="absolute -top-3.5 right-6 bg-brand-accentRed text-white text-[10px] font-black uppercase px-3 py-1 rounded-full shadow">
-            BÁN CHẠY NHẤT
+            HOT DÙNG THỬ
           </div>
           <div>
             <div class="flex items-baseline gap-2 mb-2">
               <span class="text-2xl font-black text-brand-forest">Combo Thử Thách</span>
-              <span class="text-xs text-brand-kraft font-bold">3 Món Hot</span>
+              <span class="text-xs text-brand-kraft font-bold">3 Hũ Nổi Bật</span>
             </div>
-            <p class="text-xs text-brand-kraft mb-4">Dành cho người mới bắt đầu muốn thử đủ hương vị độc lạ cơ bản.</p>
+            <p class="text-xs text-brand-kraft mb-4">Gồm dế sấy giòn lá chanh, đuông dừa sên bơ và sâu gạo sốt trứng muối.</p>
             
             <ul class="text-xs text-brand-kraftDark space-y-2 mb-6">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> 1x Dế sấy giòn lá chanh (200g)</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> 1x Sâu gạo phô mai béo ngậy (200g)</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> 1x Snack đuông dừa bơ (100g)</li>
-              <li class="flex items-center gap-2 text-brand-leaf font-bold"><i class="fa-solid fa-plus text-xs"></i> Tặng hũ muối ớt chanh nhà làm</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> 1x Dế sấy giòn sốc lá chanh (CL01)</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> 1x Snack đuông dừa chiên bơ (CL02)</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> 1x Sâu gạo trứng muối đẫm sốt (CL04)</li>
+              <li class="flex items-center gap-2 text-brand-leaf font-bold"><i class="fa-solid fa-plus text-xs"></i> Tặng kèm hũ gia vị muối ớt chanh</li>
             </ul>
           </div>
 
-          <div class="pt-4 border-t border-brand-creamAlt flex items-center justify-between">
+          <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
             <div>
               <span class="text-[11px] text-gray-400 line-through">85.000đ</span>
               <span class="text-xl font-black text-brand-accentRed block">75.000đ</span>
             </div>
-            <button onclick="addComboToCart('CB01', 'Combo Thử Thách 3 Món', 75000)" class="px-4 py-2.5 bg-brand-leaf hover:bg-brand-forest text-white font-bold text-xs rounded-xl transition-colors shadow">
-              <i class="fa-solid fa-cart-plus mr-1"></i> Mua combo
+            <button onclick="addComboToCart('CB01', 'Combo Thử Thách 3 Món (CL01+CL02+CL04)', 75000)" class="px-4 py-2.5 bg-brand-leaf hover:bg-brand-forest text-white font-bold text-xs rounded-xl transition-colors shadow">
+              <i class="fa-solid fa-cart-plus mr-1 text-brand-yellow"></i> Mua combo
             </button>
           </div>
         </div>
 
         <!-- Combo 2 -->
-        <div class="bg-white rounded-3xl p-6 border border-brand-kraft/20 shadow-md hover:shadow-xl transition-all relative flex flex-col justify-between">
+        <div class="bg-white rounded-3xl p-6 border border-brand-kraft/20 shadow-warm hover:shadow-hover transition-all flex flex-col justify-between relative">
           <div class="absolute -top-3.5 right-6 bg-brand-leaf text-white text-[10px] font-black uppercase px-3 py-1 rounded-full shadow">
-            TIỆC TÙNG LAI RAI
+            LAI RAI BIA BỌT
           </div>
           <div>
             <div class="flex items-baseline gap-2 mb-2">
-              <span class="text-2xl font-black text-brand-forest">Combo Bia Bọt</span>
-              <span class="text-xs text-brand-kraft font-bold">4 Hũ Cay Đậm</span>
+              <span class="text-2xl font-black text-brand-forest">Combo Mồi Bén</span>
+              <span class="text-xs text-brand-kraft font-bold">4 Món Đậm Cay</span>
             </div>
-            <p class="text-xs text-brand-kraft mb-4">Các món đậm đà cay thơm nhất, cực hợp nhâm nhi cùng bia mát lạnh.</p>
+            <p class="text-xs text-brand-kraft mb-4">Món nhắm chuẩn chỉnh với vị cay the của muối ớt và thơm lừng lá chanh rừng.</p>
             
             <ul class="text-xs text-brand-kraftDark space-y-2 mb-6">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> 1x Dế sấy giòn sốc lá chanh (200g)</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> 1x Sâu gạo trứng muối đẫm sốt (200g)</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> 1x Nhộng tằm sấy dẻo muối ớt (200g)</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> 1x Chà bông dế xé sợi (200g)</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> 1x Dế sấy giòn sốc lá chanh (CL01)</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> 1x Chà bông dế tơi bông (CL05)</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> 1x Nhộng tằm tẩm muối ớt (CL06)</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> 1x Nhộng tằm sấy dẻo muối ớt (CL07)</li>
             </ul>
           </div>
 
-          <div class="pt-4 border-t border-brand-creamAlt flex items-center justify-between">
+          <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
             <div>
-              <span class="text-[11px] text-gray-400 line-through">120.000đ</span>
-              <span class="text-xl font-black text-brand-accentRed block">99.000đ</span>
+              <span class="text-[11px] text-gray-400 line-through">125.000đ</span>
+              <span class="text-xl font-black text-brand-accentRed block">105.000đ</span>
             </div>
-            <button onclick="addComboToCart('CB02', 'Combo Bia Bọt Lai Rai', 99000)" class="px-4 py-2.5 bg-brand-leaf hover:bg-brand-forest text-white font-bold text-xs rounded-xl transition-colors shadow">
-              <i class="fa-solid fa-cart-plus mr-1"></i> Mua combo
+            <button onclick="addComboToCart('CB02', 'Combo Mồi Bén 4 Món (CL01+CL05+CL06+CL07)', 105000)" class="px-4 py-2.5 bg-brand-leaf hover:bg-brand-forest text-white font-bold text-xs rounded-xl transition-colors shadow">
+              <i class="fa-solid fa-cart-plus mr-1 text-brand-yellow"></i> Mua combo
             </button>
           </div>
         </div>
 
         <!-- Combo 3 -->
-        <div class="bg-white rounded-3xl p-6 border border-brand-kraft/20 shadow-md hover:shadow-xl transition-all relative flex flex-col justify-between">
+        <div class="bg-white rounded-3xl p-6 border border-brand-kraft/20 shadow-warm hover:shadow-hover transition-all flex flex-col justify-between relative">
           <div class="absolute -top-3.5 right-6 bg-brand-yellow text-brand-forest text-[10px] font-black uppercase px-3 py-1 rounded-full shadow">
-            FULL TRỌN BỘ
+            FULL TRỌN BỘ 8 MÓN
           </div>
           <div>
             <div class="flex items-baseline gap-2 mb-2">
               <span class="text-2xl font-black text-brand-forest">Combo Trọn Bộ</span>
-              <span class="text-xs text-brand-kraft font-bold">8 Món Độc Bản</span>
+              <span class="text-xs text-brand-kraft font-bold">Từ CL01 Đến CL08</span>
             </div>
-            <p class="text-xs text-brand-kraft mb-4">Trải nghiệm đủ toàn bộ menu độc lạ kèm hộp quà giấy Kraft thân thiện môi trường.</p>
+            <p class="text-xs text-brand-kraft mb-4">Trọn vẹn thế giới ẩm thực độc lạ cùng hộp bánh quy kẹp mứt và quà tặng cao cấp.</p>
             
             <ul class="text-xs text-brand-kraftDark space-y-2 mb-6">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> Đủ 8 món best-seller của shop</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> Kèm 1 hộp bánh quy nhân đuông dừa</li>
-              <li class="flex items-center gap-2 text-brand-leaf font-bold"><i class="fa-solid fa-box text-xs"></i> Tặng hộp quà Vintage + Thiệp</li>
-              <li class="flex items-center gap-2 text-brand-accentRed font-bold"><i class="fa-solid fa-truck-fast text-xs"></i> MIỄN PHÍ VẬN CHUYỂN TOÀN QUỐC</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> Đầy đủ toàn bộ 8 món từ CL01 đến CL08</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-leaf text-xs"></i> Bao gồm hộp 10 bánh quy mứt đuông dừa (CL08)</li>
+              <li class="flex items-center gap-2 text-brand-leaf font-bold"><i class="fa-solid fa-box text-xs"></i> Kèm hộp quà Kraft thủ công sang trọng</li>
+              <li class="flex items-center gap-2 text-brand-accentRed font-bold"><i class="fa-solid fa-truck-fast text-xs"></i> Miễn phí giao hàng toàn quốc</li>
             </ul>
           </div>
 
-          <div class="pt-4 border-t border-brand-creamAlt flex items-center justify-between">
+          <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
             <div>
               <span class="text-[11px] text-gray-400 line-through">245.000đ</span>
               <span class="text-xl font-black text-brand-accentRed block">199.000đ</span>
             </div>
-            <button onclick="addComboToCart('CB03', 'Combo Trọn Bộ 8 Món Độc Bản', 199000)" class="px-4 py-2.5 bg-brand-leaf hover:bg-brand-forest text-white font-bold text-xs rounded-xl transition-colors shadow">
-              <i class="fa-solid fa-cart-plus mr-1"></i> Mua combo
+            <button onclick="addComboToCart('CB03', 'Combo Trọn Bộ 8 Món (CL01 - CL08)', 199000)" class="px-4 py-2.5 bg-brand-leaf hover:bg-brand-forest text-white font-bold text-xs rounded-xl transition-colors shadow">
+              <i class="fa-solid fa-cart-plus mr-1 text-brand-yellow"></i> Mua combo
             </button>
           </div>
         </div>
 
       </div>
+
     </div>
   </section>
 
-  <!-- NUTRITION & SUSTAINABILITY SECTION -->
+  <!-- NUTRITION & SUSTAINABILITY -->
   <section id="nutrition-section" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
       
       <div class="lg:col-span-5 space-y-5">
         <span class="bg-brand-leaf/10 text-brand-leaf text-xs font-black px-3.5 py-1.5 rounded-full uppercase tracking-wider">
-          Góc Dinh Dưỡng Khoa Học
+          Giá Trị Dinh Dưỡng Khoa Học
         </span>
         <h2 class="text-3xl sm:text-4xl font-black text-brand-forest leading-tight">
-          Tại Sao Snack Côn Trùng Là Siêu Thực Phẩm Bổ Dưỡng?
+          Nguồn Đạm Sinh Thái Cho Tương Lai Khỏe Mạnh
         </h2>
         <p class="text-brand-kraft text-xs sm:text-sm leading-relaxed">
-          Được tổ chức Lương thực Thế giới (FAO) khuyến nghị, dế và nhộng tằm không chỉ giòn ngon mà còn mang lại hàm lượng dưỡng chất vượt trội so với các loại thịt truyền thống.
+          Được tổ chức Lương Nông Liên Hiệp Quốc (FAO) đánh giá là giải pháp protein bền vững nhất hành tinh: ít calo xấu, không dư lượng kháng sinh, giàu khoáng chất cho xương khớp và trí não.
         </p>
 
-        <!-- Bullet Highlights -->
         <div class="space-y-3 pt-2 text-xs sm:text-sm">
-          <div class="flex items-start gap-3 bg-white p-3.5 rounded-2xl border border-brand-kraft/10 shadow-sm">
+          <div class="flex items-start gap-3 bg-white p-3.5 rounded-2xl border border-brand-kraft/15 shadow-sm">
             <div class="w-8 h-8 rounded-xl bg-brand-yellow/30 text-brand-forest flex items-center justify-center font-bold text-base shrink-0">
               💪
             </div>
             <div>
-              <h4 class="font-bold text-brand-forest">Hàm lượng Protein ~65% - 70%</h4>
-              <p class="text-brand-kraft text-[11px] sm:text-xs">Cung cấp đầy đủ 9 axit amin thiết yếu mà cơ thể không tự tổng hợp được.</p>
+              <h4 class="font-bold text-brand-forest">Hàm lượng Protein đạt tới 68.5%</h4>
+              <p class="text-brand-kraft text-[11px] sm:text-xs">Chứa đủ 9 axit amin thiết yếu hỗ trợ tăng cơ và nạp năng lượng nhanh.</p>
             </div>
           </div>
 
-          <div class="flex items-start gap-3 bg-white p-3.5 rounded-2xl border border-brand-kraft/10 shadow-sm">
-            <div class="w-8 h-8 rounded-xl bg-brand-leafLight/20 text-brand-leaf flex items-center justify-center font-bold text-base shrink-0">
+          <div class="flex items-start gap-3 bg-white p-3.5 rounded-2xl border border-brand-kraft/15 shadow-sm">
+            <div class="w-8 h-8 rounded-xl bg-brand-leaf/20 text-brand-leaf flex items-center justify-center font-bold text-base shrink-0">
               🦴
             </div>
             <div>
               <h4 class="font-bold text-brand-forest">Dồi dào Canxi, Kẽm & Sắt</h4>
-              <p class="text-brand-kraft text-[11px] sm:text-xs">Lượng canxi gấp đôi sữa bò, hỗ trợ xương khớp và phục hồi cơ bắp nhanh.</p>
+              <p class="text-brand-kraft text-[11px] sm:text-xs">Lượng canxi tự nhiên cao gấp 2 lần sữa bò, bổ sung chắc khỏe xương.</p>
             </div>
           </div>
 
-          <div class="flex items-start gap-3 bg-white p-3.5 rounded-2xl border border-brand-kraft/10 shadow-sm">
+          <div class="flex items-start gap-3 bg-white p-3.5 rounded-2xl border border-brand-kraft/15 shadow-sm">
             <div class="w-8 h-8 rounded-xl bg-amber-100 text-brand-kraftDark flex items-center justify-center font-bold text-base shrink-0">
-              🌍
+              🍃
             </div>
             <div>
-              <h4 class="font-bold text-brand-forest">Tiết kiệm 80% tài nguyên nước & đất</h4>
-              <p class="text-brand-kraft text-[11px] sm:text-xs">Mô hình chăn nuôi sinh thái thân thiện, phát thải carbon cực thấp.</p>
+              <h4 class="font-bold text-brand-forest">Quy trình sấy khí nhiệt thấp</h4>
+              <p class="text-brand-kraft text-[11px] sm:text-xs">Giữ nguyên dinh dưỡng và vị ngọt tự nhiên, không ôi khét dầu mỡ.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Comparison Chart & Infographic -->
+      <!-- Comparison Chart -->
       <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-brand-kraft/15 shadow-warm">
         <h3 class="text-base sm:text-lg font-black text-brand-forest mb-4 flex items-center justify-between">
           <span>So sánh lượng Protein trên mỗi 100g thực phẩm</span>
-          <span class="text-xs font-semibold text-brand-kraft">Nguồn: FAO & USDA</span>
+          <span class="text-xs font-semibold text-brand-kraft">FAO & USDA</span>
         </h3>
 
-        <!-- Bar comparison 1: Dế sấy giòn -->
+        <!-- Cricket Snack -->
         <div class="space-y-1 mb-4">
           <div class="flex justify-between text-xs font-bold">
             <span class="text-brand-leaf flex items-center gap-1.5">
@@ -642,7 +614,7 @@
           </div>
         </div>
 
-        <!-- Bar comparison 2: Thịt Bò thăn -->
+        <!-- Beef -->
         <div class="space-y-1 mb-4">
           <div class="flex justify-between text-xs font-bold text-brand-kraftDark">
             <span class="flex items-center gap-1.5">
@@ -655,7 +627,7 @@
           </div>
         </div>
 
-        <!-- Bar comparison 3: Ức Gà -->
+        <!-- Chicken breast -->
         <div class="space-y-1 mb-4">
           <div class="flex justify-between text-xs font-bold text-brand-kraftDark">
             <span class="flex items-center gap-1.5">
@@ -668,7 +640,7 @@
           </div>
         </div>
 
-        <!-- Bar comparison 4: Trứng Gà -->
+        <!-- Eggs -->
         <div class="space-y-1">
           <div class="flex justify-between text-xs font-bold text-brand-kraftDark">
             <span class="flex items-center gap-1.5">
@@ -681,13 +653,12 @@
           </div>
         </div>
 
-        <!-- Callout box inside chart -->
-        <div class="mt-6 pt-5 border-t border-dashed border-brand-kraft/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs bg-brand-creamAlt/60 p-4 rounded-2xl">
+        <div class="mt-6 pt-5 border-t border-dashed border-brand-kraft/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs bg-brand-limeSoft/50 p-4 rounded-2xl">
           <p class="text-brand-forest font-semibold">
-            ✨ Vừa là món ăn vặt nhâm nhi xem phim, vừa nạp năng lượng lành mạnh không lo béo!
+            ✨ Thơm giòn lạ miệng, thưởng thức món ngon lại giàu dinh dưỡng cho cả gia đình!
           </p>
-          <a href="#menu-section" class="px-4 py-2 bg-brand-forest text-brand-yellow font-bold rounded-xl whitespace-nowrap hover:bg-brand-leaf transition-colors">
-            Thử ngay 1 hũ
+          <a href="#menu-section" class="px-4 py-2 bg-brand-forest text-brand-yellow font-bold rounded-xl whitespace-nowrap hover:bg-brand-leaf transition-colors shadow-sm">
+            Chọn món ăn thử
           </a>
         </div>
       </div>
@@ -695,94 +666,14 @@
     </div>
   </section>
 
-  <!-- CUSTOMER REVIEWS SECTION -->
-  <section id="reviews-section" class="py-16 bg-white border-t border-brand-kraft/15">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
-        <span class="text-xs font-black uppercase tracking-widest text-brand-leaf bg-brand-leaf/10 px-3.5 py-1.5 rounded-full inline-block">
-          Cảm Nhận Chân Thực
-        </span>
-        <h2 class="text-3xl font-black text-brand-forest">
-          KHÁCH HÀNG NÓI GÌ SAU KHI DÙNG THỬ?
-        </h2>
-        <p class="text-xs sm:text-sm text-brand-kraft">
-          Hơn 98% thực khách bất ngờ vì độ giòn thơm và không hề có mùi tanh khó chịu như tưởng tượng!
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- Review 1 -->
-        <div class="bg-brand-cream p-6 rounded-3xl border border-brand-kraft/15 shadow-sm hover:shadow-md transition-shadow">
-          <div class="flex items-center gap-1 text-brand-yellow text-sm mb-3">
-            ★★★★★
-          </div>
-          <p class="text-xs sm:text-sm text-brand-kraftDark italic mb-4 leading-relaxed">
-            "Mới đầu mua vì cá cược với nhóm bạn, ai dè ăn thử con dế sấy sốc lá chanh dính luôn! Vị mặn ngọt vừa vặn, lá chanh the the thơm phức, giòn rụm như snack khoai tây. Cả đám tranh nhau ăn hết sạch 2 hũ!"
-          </p>
-          <div class="flex items-center gap-3 border-t border-brand-kraft/15 pt-3">
-            <div class="w-10 h-10 rounded-full bg-brand-forest text-brand-yellow flex items-center justify-center font-bold text-xs">
-              MT
-            </div>
-            <div>
-              <h4 class="font-bold text-xs text-brand-forest">Minh Tuấn (Quận 1, TP.HCM)</h4>
-              <span class="text-[10px] text-brand-kraft">Đã mua: Dế sấy lá chanh & Đuông dừa bơ</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 2 -->
-        <div class="bg-brand-cream p-6 rounded-3xl border border-brand-kraft/15 shadow-sm hover:shadow-md transition-shadow">
-          <div class="flex items-center gap-1 text-brand-yellow text-sm mb-3">
-            ★★★★★
-          </div>
-          <p class="text-xs sm:text-sm text-brand-kraftDark italic mb-4 leading-relaxed">
-            "Sâu gạo phô mai ngon đỉnh cao nha mọi người. Bột phô mai béo ngậy phủ đều, con sâu giòn tan bùi bùi. Đóng gói hũ có màng seal bạc cẩn thận, mở ra thơm nức mũi. Sẽ ủng hộ shop dài dài."
-          </p>
-          <div class="flex items-center gap-3 border-t border-brand-kraft/15 pt-3">
-            <div class="w-10 h-10 rounded-full bg-brand-yellow text-brand-forest flex items-center justify-center font-bold text-xs">
-              LN
-            </div>
-            <div>
-              <h4 class="font-bold text-xs text-brand-forest">Linh Ngân (Cầu Giấy, Hà Nội)</h4>
-              <span class="text-[10px] text-brand-kraft">Đã mua: Sâu gạo tẩm phô mai (200g)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="bg-brand-cream p-6 rounded-3xl border border-brand-kraft/15 shadow-sm hover:shadow-md transition-shadow">
-          <div class="flex items-center gap-1 text-brand-yellow text-sm mb-3">
-            ★★★★★
-          </div>
-          <p class="text-xs sm:text-sm text-brand-kraftDark italic mb-4 leading-relaxed">
-            "Bánh quy nhân mứt đuông dừa sên bơ ăn lạ miệng mà rất cuốn. Vỏ bánh xốp, nhân béo dẻo ngọt dịu. Giao hàng từ Sài Gòn ra Đà Nẵng chỉ 2 ngày là nhận được, hàng nguyên vẹn không bị vỡ vụn."
-          </p>
-          <div class="flex items-center gap-3 border-t border-brand-kraft/15 pt-3">
-            <div class="w-10 h-10 rounded-full bg-brand-leaf text-white flex items-center justify-center font-bold text-xs">
-              HD
-            </div>
-            <div>
-              <h4 class="font-bold text-xs text-brand-forest">Hoàng Dũng (Hải Châu, Đà Nẵng)</h4>
-              <span class="text-[10px] text-brand-kraft">Đã mua: Combo Trọn Bộ 8 Món</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SLIDE-OVER CART DRAWER MODAL -->
+  <!-- CART DRAWER MODAL -->
   <div id="cartModalOverlay" class="fixed inset-0 z-50 overflow-hidden pointer-events-none transition-opacity duration-300 opacity-0">
     <div onclick="toggleCartModal(false)" class="absolute inset-0 bg-black/60 backdrop-blur-sm pointer-events-auto"></div>
     
     <div class="fixed inset-y-0 right-0 max-w-full flex pl-8 pointer-events-auto">
       <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
         
-        <!-- Cart Drawer Header -->
+        <!-- Drawer Header -->
         <div class="p-5 bg-brand-forest text-brand-cream flex items-center justify-between border-b border-brand-yellow/30">
           <div class="flex items-center gap-2.5">
             <div class="w-8 h-8 rounded-lg bg-brand-yellow text-brand-forest flex items-center justify-center font-bold text-sm">
@@ -790,7 +681,7 @@
             </div>
             <div>
               <h3 class="font-black text-base leading-tight">Giỏ Hàng Của Bạn</h3>
-              <p class="text-[11px] text-brand-creamAlt opacity-80" id="cartDrawerSubtitle">0 món được chọn</p>
+              <p class="text-[11px] text-brand-cream/80" id="cartDrawerSubtitle">0 món được chọn</p>
             </div>
           </div>
           <button onclick="toggleCartModal(false)" class="text-brand-cream hover:text-brand-yellow p-1.5 transition-colors" aria-label="Đóng giỏ hàng">
@@ -798,8 +689,8 @@
           </button>
         </div>
 
-        <!-- Free shipping progress bar -->
-        <div class="p-3 bg-brand-creamAlt text-xs border-b border-brand-kraft/15">
+        <!-- Free shipping bar -->
+        <div class="p-3 bg-brand-cream text-xs border-b border-brand-kraft/15">
           <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-brand-kraftDark">
             <span id="shippingNotice">Mua thêm để nhận Freeship!</span>
             <span id="shippingTarget">150.000đ</span>
@@ -809,18 +700,18 @@
           </div>
         </div>
 
-        <!-- Cart Items List Container -->
+        <!-- Items list -->
         <div id="cartItemsList" class="flex-1 overflow-y-auto p-4 space-y-3.5 divide-y divide-gray-100">
           <!-- Rendered dynamically -->
         </div>
 
-        <!-- Voucher Code Input Section -->
-        <div class="p-4 bg-brand-cream border-t border-brand-kraft/15 space-y-2">
+        <!-- Voucher Code Input -->
+        <div class="p-4 bg-brand-creamLight border-t border-brand-kraft/15 space-y-2">
           <div class="flex items-center gap-2">
             <input 
               type="text" 
               id="voucherInput" 
-              placeholder="Nhập mã ưu đãi (VD: SNACKNGON)" 
+              placeholder="Nhập mã ưu đãi (VD: DOCLA10)" 
               class="flex-1 uppercase px-3 py-2 text-xs rounded-xl border border-brand-kraft/30 bg-white font-bold tracking-wider focus:outline-none focus:ring-1 focus:ring-brand-leaf"
             >
             <button onclick="applyVoucher()" class="px-4 py-2 bg-brand-forest hover:bg-brand-leaf text-white font-bold text-xs rounded-xl transition-colors">
@@ -830,7 +721,7 @@
           <div id="voucherStatus" class="text-[11px] hidden font-semibold"></div>
         </div>
 
-        <!-- Cart Financial Totals & CTA -->
+        <!-- Totals & CTA -->
         <div class="p-4 bg-white border-t border-brand-kraft/15 space-y-2.5">
           <div class="flex justify-between text-xs text-brand-kraft">
             <span>Tạm tính:</span>
@@ -863,18 +754,17 @@
     </div>
   </div>
 
-  <!-- CHECKOUT & ORDER COMPLETION MODAL -->
+  <!-- CHECKOUT MODAL -->
   <div id="checkoutModalOverlay" class="fixed inset-0 z-50 overflow-y-auto pointer-events-none transition-opacity duration-300 opacity-0 flex items-center justify-center p-4">
     <div onclick="closeCheckoutModal()" class="fixed inset-0 bg-black/70 backdrop-blur-sm pointer-events-auto"></div>
     
     <div class="relative bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl pointer-events-auto my-8 border border-brand-kraft/20 max-h-[90vh] overflow-y-auto">
       
-      <!-- Modal Close Button -->
       <button onclick="closeCheckoutModal()" class="absolute top-5 right-5 text-gray-400 hover:text-brand-forest text-lg">
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <!-- Step 1: Checkout Form -->
+      <!-- Checkout Form -->
       <div id="checkoutFormStep">
         <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
           <div class="w-10 h-10 rounded-xl bg-brand-forest text-brand-yellow flex items-center justify-center text-lg">
@@ -882,7 +772,7 @@
           </div>
           <div>
             <h3 class="text-xl font-black text-brand-forest">Thông Tin Giao Hàng & Đặt Hàng</h3>
-            <p class="text-xs text-brand-kraft">Vui lòng điền thông tin để chúng tôi đóng gói gửi đến bạn sớm nhất</p>
+            <p class="text-xs text-brand-kraft">Cung cấp địa chỉ để shop đóng gói gửi đồ ăn giòn ngon đến bạn nhanh nhất</p>
           </div>
         </div>
 
@@ -906,18 +796,18 @@
 
           <div>
             <label class="block text-xs font-bold text-brand-kraftDark mb-1">Ghi chú khẩu vị & đóng gói (tùy chọn)</label>
-            <input type="text" id="custNotes" placeholder="Ví dụ: Lấy nhiều lá chanh, ít cay, giao giờ hành chính..." class="w-full px-3.5 py-2.5 rounded-xl border border-brand-kraft/30 text-xs focus:ring-2 focus:ring-brand-leaf focus:outline-none">
+            <input type="text" id="custNotes" placeholder="Ví dụ: Cho nhiều lá chanh tươi, ít cay, giao ngoài giờ hành chính..." class="w-full px-3.5 py-2.5 rounded-xl border border-brand-kraft/30 text-xs focus:ring-2 focus:ring-brand-leaf focus:outline-none">
           </div>
 
-          <!-- Payment Methods selection -->
+          <!-- Payment Options -->
           <div class="pt-2">
-            <label class="block text-xs font-bold text-brand-kraftDark mb-2">Phương thức thanh toán</label>
+            <label class="block text-xs font-bold text-brand-kraftDark mb-2">Hình thức thanh toán</label>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <label class="flex items-center gap-3 p-3 rounded-xl border-2 border-brand-leaf bg-brand-cream cursor-pointer">
                 <input type="radio" name="paymentMethod" value="COD" checked class="accent-brand-leaf">
                 <div>
                   <span class="text-xs font-bold text-brand-forest block">COD - Trả Tiền Mặt Khi Nhận</span>
-                  <span class="text-[10px] text-brand-kraft">Kiểm tra giòn ngon trước khi thanh toán</span>
+                  <span class="text-[10px] text-brand-kraft">Kiểm tra giòn rụm trước khi trả tiền</span>
                 </div>
               </label>
 
@@ -925,14 +815,14 @@
                 <input type="radio" name="paymentMethod" value="QR" class="accent-brand-leaf">
                 <div>
                   <span class="text-xs font-bold text-brand-forest block">Chuyển Khoản Nhanh VietQR</span>
-                  <span class="text-[10px] text-brand-kraft">Quét mã tiện lợi, xác nhận tự động</span>
+                  <span class="text-[10px] text-brand-kraft">Quét mã tiện lợi qua app ngân hàng</span>
                 </div>
               </label>
             </div>
           </div>
 
-          <!-- Summary inside Checkout -->
-          <div class="bg-brand-creamAlt p-4 rounded-2xl border border-brand-kraft/20 text-xs space-y-1.5 mt-4">
+          <!-- Checkout summary -->
+          <div class="bg-brand-cream p-4 rounded-2xl border border-brand-kraft/20 text-xs space-y-1.5 mt-4">
             <div class="flex justify-between font-bold text-brand-forest">
               <span>Đơn hàng bao gồm:</span>
               <span id="checkoutItemCountSummary">0 món</span>
@@ -943,7 +833,7 @@
             </div>
           </div>
 
-          <!-- Submit Order Button -->
+          <!-- Submit Order -->
           <button type="submit" class="w-full py-4 bg-brand-forest hover:bg-brand-leaf text-brand-yellow font-black text-sm rounded-2xl shadow-xl transition-all uppercase tracking-wider flex items-center justify-center gap-2">
             <i class="fa-solid fa-shield-heart"></i>
             <span>Xác Nhận Đặt Hàng Ngay</span>
@@ -952,22 +842,22 @@
         </form>
       </div>
 
-      <!-- Step 2: Order Placed Success View (Hidden by default) -->
+      <!-- Success Screen -->
       <div id="checkoutSuccessStep" class="hidden text-center py-6 space-y-4">
-        <div class="w-16 h-16 rounded-full bg-brand-leafLight/20 text-brand-leaf flex items-center justify-center text-3xl mx-auto">
+        <div class="w-16 h-16 rounded-full bg-brand-leaf/20 text-brand-leaf flex items-center justify-center text-3xl mx-auto">
           <i class="fa-solid fa-circle-check"></i>
         </div>
 
         <h3 class="text-2xl font-black text-brand-forest">ĐẶT HÀNG THÀNH CÔNG!</h3>
         <p class="text-xs text-brand-kraft max-w-md mx-auto">
-          Cảm ơn bạn đã trải nghiệm <strong>Snack Độc Lạ – Ăn Là Ghiền</strong>. Đơn hàng của bạn đang được bếp đóng gói nóng giòn và gửi đi!
+          Cảm ơn bạn đã lựa chọn <strong>Snack Độc Lạ – Ăn Là Ghiền</strong>. Đơn hàng đang được bộ phận bếp chuẩn bị và đóng kín seal để gửi đi ngay!
         </p>
 
-        <!-- Order receipt card -->
+        <!-- Receipt Card -->
         <div class="bg-brand-cream p-5 rounded-2xl border border-brand-kraft/20 text-left max-w-md mx-auto text-xs space-y-2">
           <div class="flex justify-between border-b border-brand-kraft/15 pb-2">
             <span class="text-brand-kraft font-semibold">Mã đơn hàng:</span>
-            <span id="successOrderCode" class="font-mono font-black text-brand-forest">#SNACK8892</span>
+            <span id="successOrderCode" class="font-mono font-black text-brand-forest">#CL9982</span>
           </div>
           <div class="flex justify-between">
             <span class="text-brand-kraft">Người nhận:</span>
@@ -990,19 +880,18 @@
             <span id="successTotalAmount" class="text-brand-accentRed"></span>
           </div>
 
-          <!-- Dynamic QR Code mockup if QR was chosen -->
+          <!-- Dynamic QR Code mockup -->
           <div id="qrTransferBox" class="hidden pt-3 border-t border-dashed border-brand-kraft/25 text-center space-y-2">
-            <p class="text-[11px] font-bold text-brand-forest">Quét mã QR để chuyển khoản:</p>
+            <p class="text-[11px] font-bold text-brand-forest">Quét mã QR để chuyển khoản trực tiếp:</p>
             <div class="w-36 h-36 bg-white p-2 rounded-xl mx-auto border shadow-sm flex items-center justify-center">
-              <!-- Mockup QR Image -->
-              <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=SNACKDOCLA_THANHTOAN" alt="QR Thanh toán" class="w-full h-full object-contain">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=SNACK_DOC_LA_PAY" alt="QR VietQR" class="w-full h-full object-contain">
             </div>
             <p class="text-[10px] text-brand-kraft">Nội dung CK: <strong id="qrOrderMemo" class="text-brand-forest font-mono"></strong></p>
           </div>
         </div>
 
-        <div class="pt-4 flex flex-col sm:flex-row justify-center gap-3">
-          <button onclick="closeCheckoutModal(); resetCart();" class="px-6 py-2.5 bg-brand-forest text-brand-yellow font-black text-xs rounded-xl hover:bg-brand-leaf transition-colors">
+        <div class="pt-4 flex justify-center">
+          <button onclick="closeCheckoutModal(); resetCart();" class="px-6 py-2.5 bg-brand-forest text-brand-yellow font-black text-xs rounded-xl hover:bg-brand-leaf transition-colors shadow">
             Tiếp Tục Khám Phá Món Mới
           </button>
         </div>
@@ -1012,7 +901,7 @@
     </div>
   </div>
 
-  <!-- PRODUCT DETAIL POP-UP MODAL -->
+  <!-- QUICK VIEW DETAIL MODAL -->
   <div id="productDetailModal" class="fixed inset-0 z-50 overflow-y-auto pointer-events-none transition-opacity duration-300 opacity-0 flex items-center justify-center p-4">
     <div onclick="closeDetailModal()" class="fixed inset-0 bg-black/60 backdrop-blur-sm pointer-events-auto"></div>
     
@@ -1033,25 +922,25 @@
       ✓
     </div>
     <div>
-      <h5 class="text-xs font-black text-brand-yellow">Đã thêm vào giỏ!</h5>
-      <p id="toastMessage" class="text-[11px] text-brand-creamAlt"></p>
+      <h5 class="text-xs font-black text-brand-yellow">Đã thêm vào giỏ hàng!</h5>
+      <p id="toastMessage" class="text-[11px] text-brand-cream"></p>
     </div>
   </div>
 
   <!-- FOOTER -->
-  <footer class="bg-brand-kraftDark text-brand-creamAlt pt-14 pb-8 border-t-4 border-brand-leaf">
+  <footer class="bg-brand-kraftDark text-brand-cream pt-14 pb-8 border-t-4 border-brand-leaf">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-white/10 text-xs">
         
-        <!-- Col 1: About & Story -->
+        <!-- Col 1 -->
         <div class="space-y-3">
           <div class="flex items-center gap-2">
             <span class="text-2xl">🦗</span>
             <span class="text-lg font-black text-brand-yellow">SNACK ĐỘC LẠ</span>
           </div>
-          <p class="text-brand-creamAlt/75 leading-relaxed">
-            Thương hiệu tiên phong mang nguồn dinh dưỡng côn trùng sấy giòn đậm chất ẩm thực Việt đến tận tay bạn với tiêu chuẩn sạch 100%, bảo quản kín giòn rụm.
+          <p class="text-brand-cream/75 leading-relaxed">
+            Thương hiệu tiên phong mang tinh hoa ẩm thực côn trùng sấy giòn tự nhiên đến tận tay bạn với tiêu chuẩn sạch 100%, bảo quản kín màng seal giòn tan chuẩn vị.
           </p>
           <div class="flex gap-2.5 pt-1 text-brand-yellow">
             <a href="#" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-brand-yellow hover:text-brand-forest transition-colors flex items-center justify-center"><i class="fa-brands fa-facebook-f"></i></a>
@@ -1060,43 +949,46 @@
           </div>
         </div>
 
-        <!-- Col 2: Menu links -->
+        <!-- Col 2 -->
         <div class="space-y-2.5">
-          <h4 class="font-black text-brand-yellow text-sm uppercase tracking-wider">Món Nổi Bật</h4>
-          <ul class="space-y-2 text-brand-creamAlt/80">
-            <li><a href="#menu-section" class="hover:text-brand-yellow transition-colors">Dế sấy giòn sốc lá chanh tươi (CL01)</a></li>
-            <li><a href="#menu-section" class="hover:text-brand-yellow transition-colors">Snack đuông dừa chiên bơ tỏi (CL02)</a></li>
-            <li><a href="#menu-section" class="hover:text-brand-yellow transition-colors">Sâu gạo tẩm phô mai béo ngậy (CL03)</a></li>
-            <li><a href="#menu-section" class="hover:text-brand-yellow transition-colors">Nhộng tằm sấy dẻo muối ớt (CL07)</a></li>
-            <li><a href="#menu-section" class="hover:text-brand-yellow transition-colors">Bánh quy nhân đuông dừa sên bơ (CL08)</a></li>
+          <h4 class="font-black text-brand-yellow text-sm uppercase tracking-wider">Danh Mục Sản Phẩm</h4>
+          <ul class="space-y-2 text-brand-cream/80">
+            <li><a href="#menu-section" class="hover:text-brand-yellow transition-colors">1/ Dế sấy giòn sốc lá chanh, 200g (CL01)</a></li>
+            <li><a href="#menu-section" class="hover:text-brand-yellow transition-colors">2/ Snack đuông dừa chiên bơ, 100g (CL02)</a></li>
+            <li><a href="#menu-section" class="hover:text-brand-yellow transition-colors">3/ Sâu gạo tẩm phô mai, 200g (CL03)</a></li>
+            <li><a href="#menu-section" class="hover:text-brand-yellow transition-colors">4/ Sâu gạo trứng muối đẫm sốt (CL04)</a></li>
+            <li><a href="#menu-section" class="hover:text-brand-yellow transition-colors">5/ Chà bông dế tơi sợi, 200g (CL05)</a></li>
+            <li><a href="#menu-section" class="hover:text-brand-yellow transition-colors">6/ Snack nhộng tằm tẩm muối ớt (CL06)</a></li>
+            <li><a href="#menu-section" class="hover:text-brand-yellow transition-colors">7/ Nhộng tằm sấy dẻo muối ớt (CL07)</a></li>
+            <li><a href="#menu-section" class="hover:text-brand-yellow transition-colors">8/ Bánh quy nhân mứt đuông dừa (CL08)</a></li>
           </ul>
         </div>
 
-        <!-- Col 3: Policies -->
+        <!-- Col 3 -->
         <div class="space-y-2.5">
           <h4 class="font-black text-brand-yellow text-sm uppercase tracking-wider">Chính Sách & Cam Kết</h4>
-          <ul class="space-y-2 text-brand-creamAlt/80">
-            <li>✓ Đổi trả trong 7 ngày nếu bị ỉu, hở seal</li>
-            <li>✓ Đóng gói túi màng nhôm / hũ nắp giật bảo quản</li>
-            <li>✓ Miễn phí giao hàng cho đơn trên 150.000đ</li>
-            <li>✓ Giấy kiểm nghiệm chất lượng VSATTP số 24/2026</li>
+          <ul class="space-y-2 text-brand-cream/80">
+            <li>✓ Đổi trả trong 7 ngày nếu bị ỉu, hở seal nắp</li>
+            <li>✓ Đóng gói túi zipper màng bạc hoặc hũ nắp nhôm kín</li>
+            <li>✓ Miễn phí giao hàng toàn quốc từ 150.000đ</li>
+            <li>✓ Giấy kiểm định chất lượng ATVSTP đạt chuẩn</li>
           </ul>
         </div>
 
-        <!-- Col 4: Store Contact -->
+        <!-- Col 4 -->
         <div class="space-y-2.5">
           <h4 class="font-black text-brand-yellow text-sm uppercase tracking-wider">Thông Tin Liên Hệ</h4>
-          <ul class="space-y-2 text-brand-creamAlt/80">
+          <ul class="space-y-2 text-brand-cream/80">
             <li><i class="fa-solid fa-location-dot text-brand-yellow mr-1.5"></i> Xưởng sản xuất: Ấp 3, Hóc Môn, TP. Hồ Chí Minh</li>
             <li><i class="fa-solid fa-phone text-brand-yellow mr-1.5"></i> Hotline đặt hàng: 0987.654.321</li>
             <li><i class="fa-solid fa-envelope text-brand-yellow mr-1.5"></i> info@snackdocla.vn</li>
-            <li><i class="fa-solid fa-clock text-brand-yellow mr-1.5"></i> 08:00 - 22:00 (Mỗi ngày)</li>
+            <li><i class="fa-solid fa-clock text-brand-yellow mr-1.5"></i> 08:00 - 22:00 (Hàng ngày)</li>
           </ul>
         </div>
 
       </div>
 
-      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-brand-creamAlt/60 text-center sm:text-left">
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-brand-cream/60 text-center sm:text-left">
         <div>
           © 2026 <strong>SNACK ĐỘC LẠ – ĂN LÀ GHIỀN</strong>. Tất cả quyền được bảo lưu.
         </div>
@@ -1109,121 +1001,121 @@
     </div>
   </footer>
 
-  <!-- CORE JAVASCRIPT: E-COMMERCE LOGIC -->
+  <!-- SCRIPT LOGIC: TOÀN BỘ 8 SẢN PHẨM CL01 ĐẾN CL08 CÙNG HỆ THỐNG MUA HÀNG -->
   <script>
-    // 1. DATA SOURCE: 8 Sản phẩm chuẩn theo ảnh & mô tả
+    // DATA SOURCE CHÍNH XÁC THEO ẢNH CHỤP CỦA BẠN (CL01 ĐẾN CL08)
     const productsData = [
       {
         id: 'CL01',
-        name: 'Dế Sấy Giòn Sốc Lá Chanh',
+        name: '1/ Dế sấy giòn sốc lá chanh',
         category: 'de',
         weight: '200g',
         price: 35000,
-        badge: 'Bán chạy số 1',
+        badge: 'Lá Chanh Tươi',
         badgeColor: 'bg-brand-leaf text-white',
-        desc: 'Dế mèn thịt ngọt bùi được sấy thăng hoa giòn tan, lắc cùng lá chanh tươi thái chỉ thơm phức the mát.',
-        nutrition: 'Protein: 21g/100g | Canxi: 76mg | Năng lượng: 125kcal',
+        desc: 'Bát dế sấy thăng hoa thơm giòn cùng lá chanh xanh tươi thái chỉ the mát, vị mặn ngọt đậm đà giòn rụm.',
+        nutrition: 'Protein: 21.5g | Canxi: 76mg | Giàu kẽm',
         crispness: '5/5 (Giòn rụm)',
-        spiceLevel: 'Cay nhẹ lá chanh',
-        img: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80'
+        spiceLevel: 'Thơm cay dịu lá chanh',
+        img: 'https://lh3.googleusercontent.com/d/10RhbbVrdQDCXoliG8TCh7K7iPBABgEfy'
       },
       {
         id: 'CL02',
-        name: 'Snack Đuông Dừa Chiên Bơ',
+        name: '2/ Snack đuông dừa chiên bơ',
         category: 'duong',
         weight: '100g',
         price: 25000,
-        badge: 'Đặc sản Bến Tre',
+        badge: 'Béo Ngậy Chiên Bơ',
         badgeColor: 'bg-brand-yellow text-brand-forest',
-        desc: 'Đuông dừa ngậy sữa tự nhiên chiên xốp cùng bơ lạt nguyên chất, ngọt thanh bùi béo khó quên.',
-        nutrition: 'Protein: 16g/100g | Lipid lành mạnh: 12g | Bổ sung Kẽm',
-        crispness: '4/5 (Vỏ giòn, nhân dẻo ngậy)',
-        spiceLevel: 'Không cay',
-        img: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=600&q=80'
+        desc: 'Rổ tre đựng đuông dừa chiên bơ vàng ươm, vỏ giòn xốp bên trong béo ngậy sữa dừa tự nhiên khó cưỡng.',
+        nutrition: 'Protein: 16.2g | Lipid tự nhiên | Vitamin B',
+        crispness: '4/5 (Vỏ giòn nhân dẻo ngậy)',
+        spiceLevel: 'Không cay, thơm lừng bơ bắp',
+        img: 'https://lh3.googleusercontent.com/d/1wawQghgkdr9Mvg02dwxgJnV7otv0-EC1'
       },
       {
         id: 'CL03',
-        name: 'Sâu Gạo Tẩm Phô Mai',
+        name: '3/ Sâu gạo tẩm phô mai',
         category: 'sau',
         weight: '200g',
         price: 25000,
-        badge: 'Món Mới Hot',
+        badge: 'Phô Mai Béo',
         badgeColor: 'bg-brand-accentRed text-white',
-        desc: 'Sâu gạo giống sạch sấy xốp tẩm lớp bột phô mai Cheddar thượng hạng béo mặn thơm lừng.',
-        nutrition: 'Protein: 19g/100g | Canxi cao | Vitamin B12',
-        crispness: '5/5 (Cực giòn)',
-        spiceLevel: 'Không cay, thơm phô mai',
-        img: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=600&q=80'
+        desc: 'Đĩa đất nung chứa sâu gạo sấy xốp vàng giòn, phủ lớp bột phô mai Cheddar béo mặn thơm lừng.',
+        nutrition: 'Protein: 19.8g | Đạm tự nhiên | Giàu Canxi',
+        crispness: '5/5 (Cực kỳ giòn)',
+        spiceLevel: 'Không cay, ngậy phô mai',
+        img: 'https://lh3.googleusercontent.com/d/1vsTxiG4lzPm1b3QxPupxB33s_Wco1rnH'
       },
       {
         id: 'CL04',
-        name: 'Sâu Gạo Trứng Muối Đẫm Sốt',
+        name: '4/ Sâu gạo trứng muối đẫm sốt',
         category: 'sau',
         weight: '200g',
         price: 25000,
-        badge: 'Hoàng Kim',
+        badge: 'Trứng Muối Đậm Đà',
         badgeColor: 'bg-amber-600 text-white',
-        desc: 'Lớp sốt trứng muối tươi bùi béo óng ả bao trọn từng con sâu sấy giòn tan mằn mặn ngọt ngào.',
-        nutrition: 'Protein: 18g/100g | Đạm tự nhiên | Giàu Omega 3',
-        crispness: '4.5/5',
-        spiceLevel: 'Cay dịu thơm nồng',
-        img: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80'
+        desc: 'Cốc sứ ramekin đựng sâu gạo quyện sốt trứng muối vàng óng, mằn mặn béo bùi bao trọn từng con sâu sấy giòn.',
+        nutrition: 'Protein: 18.5g | Omega 3 & Kẽm',
+        crispness: '4.5/5 (Thấm đẫm sốt mà vẫn giòn)',
+        spiceLevel: 'Cay nhẹ thơm ngậy',
+        img: 'https://lh3.googleusercontent.com/d/1QMeW3c2vGM26qwoMAi_5y1arP4uTFZPw'
       },
       {
         id: 'CL05',
-        name: 'Chà Bông Dế Giòn Cay',
+        name: '5/ Chà bông dế',
         category: 'de',
         weight: '200g',
         price: 30000,
-        badge: 'Độc Quyền',
-        badgeColor: 'bg-brand-forest text-brand-yellow',
-        desc: 'Thịt dế được xé sợi bông tơi, sao khô vừa độ cùng tỏi ớt, ăn liền hoặc rắc cơm cháy xôi nóng.',
-        nutrition: 'Protein: 24g/100g (Cao nhất) | Ít béo',
-        crispness: '3.5/5 (Tơi xốp đậm đà)',
+        badge: 'Tơi Bông Đậm Vị',
+        badgeColor: 'bg-brand-kraft text-white',
+        desc: 'Đĩa sứ trắng đựng chà bông dế xé sợi tơi xốp vàng óng, sao khô cùng tỏi ớt mộc mạc thơm lừng.',
+        nutrition: 'Protein: 24.5g/100g (Cao nhất) | Ít béo',
+        crispness: '3.5/5 (Sợi bông tơi xốp)',
         spiceLevel: 'Cay vừa vừa',
-        img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80'
+        img: 'https://lh3.googleusercontent.com/d/1QD00MmkihS2dDwszxIGH51WgKiVPVxsI'
       },
       {
         id: 'CL06',
-        name: 'Snack Nhộng Tằm Tẩm Muối Ớt',
-        category: 'sau',
+        name: '6/ Snack nhộng tằm tẩm muối ớt',
+        category: 'nhong',
         weight: '200g',
         price: 30000,
-        badge: 'Hũ Tiện Lợi',
+        badge: 'Hũ Pet Muối Ớt',
         badgeColor: 'bg-red-700 text-white',
-        desc: 'Nhộng tằm dâu tươi sấy giòn rụm xóc muối ớt hột đâm nhuyễn cay nồng kích thích vị giác cực đỉnh.',
-        nutrition: 'Protein: 20g/100g | Choline bổ não',
-        crispness: '5/5 (Giòn vang)',
-        spiceLevel: 'Cay nồng đã miệng',
-        img: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=600&q=80'
+        desc: 'Hũ nắp nhôm trong suốt đựng nhộng tằm ướp muối ớt đậm đà, vị cay nồng giòn tan kích thích vị giác.',
+        nutrition: 'Protein: 20.0g | Bổ sung Choline',
+        crispness: '5/5 (Giòn vang rụm)',
+        spiceLevel: 'Cay nồng cuốn miệng',
+        img: 'https://lh3.googleusercontent.com/d/1WVUwto2acUmOqR5ZBj5m7G6E77zK-zGR'
       },
       {
         id: 'CL07',
-        name: 'Nhộng Tằm Sấy Dẻo Muối Ớt',
-        category: 'sau',
+        name: '7/ Nhộng tằm sấy dẻo muối ớt',
+        category: 'nhong',
         weight: '200g',
         price: 30000,
-        badge: 'Lạ Miệng',
-        badgeColor: 'bg-brand-kraft text-white',
-        desc: 'Công nghệ sấy dẻo giữ trọn độ bùi béo tự nhiên, ép mỏng thấm đượm muối ớt chấm cùng bia thì hết nấc.',
-        nutrition: 'Protein: 17g/100g | Giàu khoáng chất',
-        crispness: '2/5 (Dẻo bùi dai nhẹ)',
-        spiceLevel: 'Cay tê nhẹ',
-        img: 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=600&q=80'
+        badge: 'Sấy Dẻo Độc Lạ',
+        badgeColor: 'bg-brand-forest text-brand-yellow',
+        desc: 'Miếng bánh ép nhộng tằm sấy dẻo vuông vức trải trên nền vải thô, bùi dẻo đậm muối ớt làm mồi nhậu hết nấc.',
+        nutrition: 'Protein: 17.5g | Giàu khoáng chất',
+        crispness: '2.5/5 (Dẻo bùi dai nhẹ)',
+        spiceLevel: 'Cay tê đầu lưỡi',
+        img: 'https://lh3.googleusercontent.com/d/1XQfflidjtG7_R0u-kTU-kvjx4tlrAOWU'
       },
       {
         id: 'CL08',
-        name: 'Bánh Quy Kẹp Mứt Đuông Dừa Sên Bơ',
-        category: 'banh',
-        weight: 'Hộp 10 cái',
+        name: '8/ Bánh quy nhân mứt đuông dừa sên bơ',
+        category: 'duong',
+        weight: '10 cái',
         price: 45000,
-        badge: 'Siêu Phẩm Bánh',
+        badge: 'Hộp Quà Kraft (10 cái)',
         badgeColor: 'bg-brand-yellow text-brand-forest',
-        desc: 'Vỏ bánh quy bơ Pháp nướng thơm giòn, kẹp ở giữa là mứt đuông dừa sên bơ dừa thơm lừng béo ngậy.',
-        nutrition: 'Protein: 10g/hộp | Năng lượng bền bỉ',
-        crispness: '4/5 (Vỏ giòn nhân dẻo mềm)',
-        spiceLevel: 'Ngọt thơm thanh nhẹ',
-        img: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80'
+        desc: 'Hộp giấy kraft mộc đựng 10 bánh quy vuông nhân mứt đuông dừa sên bơ dẻo thơm, vỏ bánh giòn tan béo dịu.',
+        nutrition: 'Năng lượng cân bằng | Protein tự nhiên',
+        crispness: '4/5 (Vỏ giòn, mứt dẻo thơm bơ)',
+        spiceLevel: 'Không cay, ngọt thanh bơ bắp',
+        img: 'https://lh3.googleusercontent.com/d/1sQY5IwpVpXKusJFssuJHRIX76GwEvVaV'
       }
     ];
 
@@ -1232,27 +1124,24 @@
     let currentFilter = 'all';
     let currentSearch = '';
     let currentSort = 'default';
-    let appliedCoupon = null; // { code: 'SNACKNGON', discountPercent: 10 }
+    let appliedCoupon = null;
 
-    // Currency Formatter
     const formatCurrency = (number) => {
       return new Intl.NumberFormat('vi-VN').format(number) + 'đ';
     };
 
-    // Initialize
     window.addEventListener('DOMContentLoaded', () => {
       loadCartFromStorage();
       renderProducts();
       updateCartUI();
     });
 
-    // 2. PRODUCT RENDERING & FILTERING
+    // RENDER PRODUCTS
     function renderProducts() {
       const grid = document.getElementById('productGrid');
       const noFound = document.getElementById('noProductsFound');
       const countDisplay = document.getElementById('productCountDisplay');
 
-      // Filter by category and search keyword
       let filtered = productsData.filter(item => {
         const matchesCategory = (currentFilter === 'all') || (item.category === currentFilter);
         const matchesSearch = item.name.toLowerCase().includes(currentSearch.toLowerCase()) || 
@@ -1261,7 +1150,6 @@
         return matchesCategory && matchesSearch;
       });
 
-      // Sorting
       if (currentSort === 'price-asc') {
         filtered.sort((a, b) => a.price - b.price);
       } else if (currentSort === 'price-desc') {
@@ -1280,14 +1168,14 @@
 
       noFound.classList.add('hidden');
       grid.innerHTML = filtered.map(product => `
-        <div class="shimmer-card bg-white rounded-3xl border border-brand-kraft/15 p-4 flex flex-col justify-between shadow-sm hover:border-brand-leaf/40 hover:shadow-hover">
+        <div class="item-card bg-white rounded-3xl border border-brand-kraft/20 p-4 flex flex-col justify-between shadow-sm hover:border-brand-leaf/40 hover:shadow-hover">
           <div>
-            <!-- Image & Badges -->
-            <div class="relative h-48 rounded-2xl overflow-hidden bg-brand-creamAlt mb-3.5 group cursor-pointer" onclick="openDetailModal('${product.id}')">
+            <!-- Image View -->
+            <div class="relative h-52 rounded-2xl overflow-hidden bg-brand-cream mb-3.5 group cursor-pointer" onclick="openDetailModal('${product.id}')">
               <img 
                 src="${product.img}" 
                 alt="${product.name}" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 loading="lazy"
               >
               <span class="absolute top-2.5 left-2.5 ${product.badgeColor} text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
@@ -1298,10 +1186,10 @@
               </span>
             </div>
 
-            <!-- Codes & Titles -->
+            <!-- Title & ID -->
             <div class="flex items-center justify-between text-[11px] font-bold text-brand-kraft mb-1">
-              <span>MÃ: ${product.id}</span>
-              <span class="text-brand-leafLight flex items-center gap-1"><i class="fa-solid fa-seedling"></i> Tự nhiên</span>
+              <span>MÃ SẢN PHẨM: ${product.id}</span>
+              <span class="text-brand-leafLight flex items-center gap-1"><i class="fa-solid fa-leaf"></i> Tự nhiên</span>
             </div>
 
             <h3 onclick="openDetailModal('${product.id}')" class="font-extrabold text-sm sm:text-base text-brand-forest hover:text-brand-leaf cursor-pointer line-clamp-1 transition-colors">
@@ -1313,7 +1201,7 @@
             </p>
           </div>
 
-          <!-- Bottom Card: Price and Action Buttons -->
+          <!-- Bottom Card -->
           <div class="pt-4 mt-3 border-t border-dashed border-gray-100 flex items-center justify-between">
             <div>
               <span class="text-[10px] text-brand-kraft block">Giá bán</span>
@@ -1323,8 +1211,8 @@
             <div class="flex items-center gap-2">
               <button 
                 onclick="openDetailModal('${product.id}')" 
-                class="w-9 h-9 rounded-xl bg-brand-cream hover:bg-brand-creamAlt text-brand-forest flex items-center justify-center text-xs transition-colors border border-brand-kraft/15"
-                title="Xem chi tiết"
+                class="w-9 h-9 rounded-xl bg-brand-cream hover:bg-brand-creamLight text-brand-forest flex items-center justify-center text-xs transition-colors border border-brand-kraft/20"
+                title="Xem chi tiết món"
               >
                 <i class="fa-regular fa-eye"></i>
               </button>
@@ -1343,7 +1231,6 @@
       `).join('');
     }
 
-    // Filter by Category
     function setCategoryFilter(category) {
       currentFilter = category;
       const buttons = document.querySelectorAll('.category-btn');
@@ -1356,7 +1243,6 @@
       renderProducts();
     }
 
-    // Live Search Function
     function handleSearch(keyword) {
       currentSearch = keyword;
       const clearBtn = document.getElementById('clearSearchBtn');
@@ -1392,7 +1278,7 @@
       document.getElementById('menu-section').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // 3. CART MANAGEMENT
+    // CART OPERATIONS
     function addToCart(productId, customQty = 1) {
       const item = productsData.find(p => p.id === productId);
       if (!item) return;
@@ -1425,7 +1311,7 @@
           id: comboId,
           name: comboName,
           price: price,
-          weight: 'Combo Set',
+          weight: 'Set Combo Đầy Đủ',
           img: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=400&q=80',
           qty: 1
         });
@@ -1458,13 +1344,10 @@
       const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
       const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
 
-      // Badges and counts
       document.getElementById('headerCartCount').innerText = totalItems;
       document.getElementById('cartDrawerSubtitle').innerText = `${totalItems} món được chọn`;
 
       const listContainer = document.getElementById('cartItemsList');
-
-      // Free shipping threshold: 150,000 VND
       const freeShipThreshold = 150000;
       const shippingProgressBar = document.getElementById('shippingProgressBar');
       const shippingNotice = document.getElementById('shippingNotice');
@@ -1473,22 +1356,21 @@
       shippingProgressBar.style.width = percent + '%';
 
       if (subtotal >= freeShipThreshold && subtotal > 0) {
-        shippingNotice.innerHTML = '🎉 Bạn đã được <strong class="text-brand-leaf font-bold">FREESHIP 0Đ</strong>!';
+        shippingNotice.innerHTML = '🎉 Bạn được <strong class="text-brand-leaf font-bold">FREESHIP 0Đ TOÀN QUỐC</strong>!';
       } else {
         const remaining = freeShipThreshold - subtotal;
         shippingNotice.innerText = `Mua thêm ${formatCurrency(remaining)} để nhận Freeship!`;
       }
 
-      // Empty Cart View
       if (cart.length === 0) {
         listContainer.innerHTML = `
           <div class="text-center py-12 text-brand-kraft">
-            <div class="w-16 h-16 rounded-full bg-brand-creamAlt flex items-center justify-center mx-auto text-2xl mb-3">
+            <div class="w-16 h-16 rounded-full bg-brand-cream flex items-center justify-center mx-auto text-2xl mb-3">
               🦗
             </div>
             <p class="font-bold text-sm text-brand-forest">Giỏ hàng của bạn đang trống!</p>
-            <p class="text-xs text-brand-kraft mt-1">Hãy khám phá menu dế sấy, sâu gạo thơm giòn nhé.</p>
-            <button onclick="toggleCartModal(false); scrollToMenu();" class="mt-4 px-4 py-2 bg-brand-leaf text-white font-bold text-xs rounded-xl">
+            <p class="text-xs text-brand-kraft mt-1">Hãy chọn món ngon từ CL01 đến CL08 nhé.</p>
+            <button onclick="toggleCartModal(false); scrollToMenu();" class="mt-4 px-4 py-2 bg-brand-leaf text-white font-bold text-xs rounded-xl shadow">
               Chọn món ngay
             </button>
           </div>
@@ -1508,7 +1390,6 @@
               <span class="text-xs font-black text-brand-accentRed block mt-0.5">${formatCurrency(item.price)}</span>
             </div>
 
-            <!-- Quantity adjust -->
             <div class="flex items-center bg-brand-cream rounded-xl border border-brand-kraft/20 p-1">
               <button onclick="updateCartItemQty('${item.id}', -1)" class="w-6 h-6 rounded-lg bg-white flex items-center justify-center text-xs font-bold text-brand-kraftDark hover:bg-red-50">
                 -
@@ -1519,7 +1400,6 @@
               </button>
             </div>
 
-            <!-- Remove single item -->
             <button onclick="removeCartItem('${item.id}')" class="text-gray-300 hover:text-red-500 p-1 text-xs" title="Xóa">
               <i class="fa-solid fa-trash-can"></i>
             </button>
@@ -1527,7 +1407,6 @@
         `).join('');
       }
 
-      // Calculations with discount
       let discountAmount = 0;
       if (appliedCoupon && subtotal > 0) {
         discountAmount = Math.round(subtotal * (appliedCoupon.discountPercent / 100));
@@ -1545,7 +1424,6 @@
       document.getElementById('cartGrandTotal').innerText = formatCurrency(grandTotal);
     }
 
-    // Voucher handling
     function applyVoucher() {
       const input = document.getElementById('voucherInput');
       const status = document.getElementById('voucherStatus');
@@ -1557,16 +1435,16 @@
         return;
       }
 
-      if (code === 'SNACKNGON' || code === 'DOCLA10') {
+      if (code === 'DOCLA10' || code === 'SNACKNGON') {
         appliedCoupon = { code: code, discountPercent: 10 };
-        status.innerText = `Áp dụng thành công mã ${code}: Giảm 10%!`;
+        status.innerText = `Áp dụng thành công mã ${code}: Giảm ngay 10%!`;
         status.className = 'text-[11px] text-green-600 font-semibold block';
       } else if (code === 'FREESHIP') {
         appliedCoupon = { code: code, discountPercent: 5 };
         status.innerText = `Áp dụng voucher FREESHIP: Hỗ trợ thêm 5%!`;
         status.className = 'text-[11px] text-green-600 font-semibold block';
       } else {
-        status.innerText = 'Mã giảm giá không hợp lệ hoặc đã hết hạn.';
+        status.innerText = 'Mã ưu đãi không hợp lệ hoặc đã hết hạn.';
         status.className = 'text-[11px] text-red-500 font-semibold block';
       }
       updateCartUI();
@@ -1579,13 +1457,10 @@
       applyVoucher();
     }
 
-    // Storage persistence
     function saveCartToStorage() {
       try {
         localStorage.setItem('snack_docla_cart', JSON.stringify(cart));
-      } catch (e) {
-        // Fallback if local storage restricted
-      }
+      } catch (e) {}
     }
 
     function loadCartFromStorage() {
@@ -1604,7 +1479,6 @@
       updateCartUI();
     }
 
-    // Modal Toggles
     function toggleCartModal(show) {
       const modal = document.getElementById('cartModalOverlay');
       if (show) {
@@ -1614,7 +1488,7 @@
       }
     }
 
-    // 4. CHECKOUT WORKFLOW
+    // CHECKOUT LOGIC
     function openCheckoutModal() {
       if (cart.length === 0) return;
       toggleCartModal(false);
@@ -1648,18 +1522,17 @@
       const address = document.getElementById('custAddress').value.trim();
       const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
 
-      const randomCode = 'SDL' + Math.floor(100000 + Math.random() * 900000);
+      const randomCode = 'CL' + Math.floor(10000 + Math.random() * 90000);
       const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
       let discount = appliedCoupon ? Math.round(subtotal * (appliedCoupon.discountPercent / 100)) : 0;
       let ship = subtotal >= 150000 ? 0 : 20000;
       let total = subtotal - discount + ship;
 
-      // Populate Success Screen
       document.getElementById('successOrderCode').innerText = '#' + randomCode;
       document.getElementById('successCustomerName').innerText = name;
       document.getElementById('successCustomerPhone').innerText = phone;
       document.getElementById('successCustomerAddress').innerText = address;
-      document.getElementById('successPaymentMethod').innerText = paymentMethod === 'COD' ? 'Tiền mặt khi nhận (COD)' : 'Chuyển khoản VietQR';
+      document.getElementById('successPaymentMethod').innerText = paymentMethod === 'COD' ? 'Tiền mặt khi nhận (COD)' : 'Chuyển khoản nhanh VietQR';
       document.getElementById('successTotalAmount').innerText = formatCurrency(total);
 
       const qrBox = document.getElementById('qrTransferBox');
@@ -1674,7 +1547,7 @@
       document.getElementById('checkoutSuccessStep').classList.remove('hidden');
     }
 
-    // 5. PRODUCT DETAIL POP-UP MODAL
+    // QUICK VIEW DETAIL MODAL
     function openDetailModal(productId) {
       const product = productsData.find(p => p.id === productId);
       if (!product) return;
@@ -1682,10 +1555,13 @@
       const container = document.getElementById('detailModalContent');
       container.innerHTML = `
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
-          <div class="relative h-60 rounded-2xl overflow-hidden bg-brand-creamAlt">
+          <div class="relative h-64 rounded-2xl overflow-hidden bg-brand-cream border border-brand-kraft/15">
             <img src="${product.img}" alt="${product.name}" class="w-full h-full object-cover">
             <span class="absolute top-2.5 left-2.5 ${product.badgeColor} text-[10px] font-black px-2.5 py-1 rounded-full uppercase">
               ${product.badge}
+            </span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded">
+              ${product.weight}
             </span>
           </div>
 
@@ -1697,10 +1573,10 @@
             <p class="text-xs text-brand-kraft leading-relaxed">${product.desc}</p>
 
             <div class="bg-brand-cream p-3 rounded-xl border border-brand-kraft/15 text-[11px] space-y-1">
-              <div><strong class="text-brand-forest">Thành phần dinh dưỡng:</strong> ${product.nutrition}</div>
+              <div><strong class="text-brand-forest">Dinh dưỡng:</strong> ${product.nutrition}</div>
               <div><strong class="text-brand-forest">Độ giòn:</strong> ${product.crispness}</div>
-              <div><strong class="text-brand-forest">Cấp độ cay:</strong> ${product.spiceLevel}</div>
-              <div><strong class="text-brand-forest">Quy cách:</strong> Hũ kín ${product.weight}</div>
+              <div><strong class="text-brand-forest">Hương vị / Độ cay:</strong> ${product.spiceLevel}</div>
+              <div><strong class="text-brand-forest">Quy cách đóng gói:</strong> Hũ kín / Túi nhôm ${product.weight}</div>
             </div>
 
             <div class="flex items-center gap-3 pt-2">
@@ -1722,7 +1598,6 @@
       modal.classList.add('opacity-0', 'pointer-events-none');
     }
 
-    // 6. TOAST NOTIFICATION
     function showToast(productName) {
       const toast = document.getElementById('toastNotification');
       document.getElementById('toastMessage').innerText = productName;
@@ -1735,3 +1610,4 @@
 
 </body>
 </html>
+```
